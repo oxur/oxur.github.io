@@ -1,0 +1,68 @@
+<div
+    id="layout-topbar"
+    class="data-[at-top=false]:bg-base-100/95 border-base-300 fixed inset-x-0 top-0 z-50 container bg-transparent backdrop-blur-sm transition-all data-[at-top=false]:max-sm:border-b sm:rounded-full data-[at-top=false]:sm:top-4 data-[at-top=false]:sm:px-8 data-[at-top=false]:sm:shadow">
+    <div>
+        <nav class="flex items-center justify-between py-2">
+            <div class="flex items-center gap-2">
+                <label
+                    for="menu-drawer"
+                    id="menu-drawer-trigger"
+                    aria-label="open sidebar"
+                    class="btn btn-square btn-ghost btn-sm lg:hidden">
+                    <span class="iconify lucide--menu size-5"></span>
+                </label>
+
+                <!-- Navbar Brand logo -->
+                <a href="#" class="text-brand-gradient text-2xl font-semibold tracking-tighter">
+                    daisyAI
+                </a>
+            </div>
+
+            <div class="max-lg:hidden">
+                <ul class="menu menu-horizontal gap-2 px-1">
+                    <li class="font-medium"><a href="#home">Home</a></li>
+                    <li class="font-medium"><a href="#features">Features</a></li>
+                    <li class="font-medium"><a href="#organize">Organize</a></li>
+                    <li class="font-medium"><a href="#testimonial">Testimonial</a></li>
+                    <li class="font-medium"><a href="#faq">FAQ</a></li>
+                    <li class="font-medium">
+                        <a
+                            href="https://daisyui.com/store/checkout?product=71f032e3-1a23-4b79-b74e-130ada4899f2&aff=K0XmL"
+                            target="_blank"
+                            class="btn btn-primary btn-sm">
+                            Buy Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- sm screen menu (drawer) -->
+        <div class="drawer">
+            <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-side">
+                <label for="menu-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+                <div class="bg-base-100 min-h-full w-60 p-5">
+                    <a href="#" class="text-brand-gradient text-2xl font-bold tracking-tighter">
+                        daisyAI
+                    </a>
+                    <ul class="menu w-full gap-2 p-0 pt-4">
+                        <li class="font-medium"><a href="#home">Home</a></li>
+                        <li class="font-medium"><a href="#features">Features</a></li>
+                        <li class="font-medium"><a href="#organize">Organize</a></li>
+                        <li class="font-medium"><a href="#testimonial">Testimonial</a></li>
+                        <li class="font-medium"><a href="#faq">FAQ</a></li>
+                        <li class="font-medium">
+                            <a
+                                href="https://daisyui.com/store/checkout?product=71f032e3-1a23-4b79-b74e-130ada4899f2&aff=K0XmL"
+                                target="_blank"
+                                class="btn btn-primary btn-sm">
+                                Buy Now
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
