@@ -11,6 +11,7 @@ syntax_highlight:
 
 ignore:
   - "*.swp"
+  - "reference/**"
 
 # Permalinks
 posts:

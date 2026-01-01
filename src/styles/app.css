@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;1000&display=swap");
+
+@import "tailwindcss";
+@import "./daisyui.css";
+
+@plugin "@iconify/tailwind4" {
+    prefixes: lucide;
+}
+
+@theme {
+    --font-body: "Figtree", sans-serif;
+}
+
+html {
+    @apply relative scroll-smooth;
+}
+
+body {
+    @apply bg-base-100 font-body text-base-content overflow-x-hidden;
+}
+
+:target {
+    @apply scroll-mt-8;
+}
+
+/** Container utility **/
+@utility container {
+    margin-inline: auto;
+    padding-inline: 1rem;
+    @apply px-[1rem] sm:px-[1rem] md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem];
+}
+
+.text-brand-gradient {
+    background: linear-gradient(to right, #fc766a 0%, #cc3c08 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-brand-gradient {
+    background: linear-gradient(to right, #ee4d14 0%, #c03604 100%);
+}
+
+@theme {
+    --animate-bounce-slow: bounce-slow 2s infinite alternate;
+
+    @keyframes bounce-slow {
+        0% {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-12px);
+        }
+    }
+}

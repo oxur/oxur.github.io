@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" class="group/html">
+<head>
+{% include "head.liquid" %}
+</head>
+<body>
+{% include "topbar.liquid" %}
+
+<main>
+{{ page.content }}
+</main>
+
+{% include "footer.liquid" %}
+{% include "theme-toggle.liquid" %}
+
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

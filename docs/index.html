@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" class="group/html">
+<head>
+    <meta charset="utf-8" />
+<title>Home | Oxur Lisp</title>
+<meta content="Oxur - A modern, expressive Lisp dialect for systems programming" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Theme favicon -->
+<link rel="shortcut icon" href="/assets/images/favicon.ico" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+
+</head>
+<body>
+    <div
+    id="layout-topbar"
+    class="data-[at-top=false]:bg-base-100/95 border-base-300 fixed inset-x-0 top-0 z-50 container bg-transparent backdrop-blur-sm transition-all data-[at-top=false]:max-sm:border-b sm:rounded-full data-[at-top=false]:sm:top-4 data-[at-top=false]:sm:px-8 data-[at-top=false]:sm:shadow">
+    <div>
+        <nav class="flex items-center justify-between py-2">
+            <div class="flex items-center gap-2">
+                <label
+                    for="menu-drawer"
+                    id="menu-drawer-trigger"
+                    aria-label="open sidebar"
+                    class="btn btn-square btn-ghost btn-sm lg:hidden">
+                    <span class="iconify lucide--menu size-5"></span>
+                </label>
+
+                <!-- Navbar Brand logo -->
+                <a href="/" class="text-brand-gradient text-2xl font-semibold tracking-tighter">
+                    Oxur
+                </a>
+            </div>
+
+            <div class="max-lg:hidden">
+                <ul class="menu menu-horizontal gap-2 px-1">
+                    <li class="font-medium"><a href="/#home">Home</a></li>
+                    <li class="font-medium"><a href="/#features">Features</a></li>
+                    <li class="font-medium"><a href="/docs">Docs</a></li>
+                    <li class="font-medium"><a href="/#download">Download</a></li>
+                    <li class="font-medium">
+                        <a
+                            href="https://github.com/oxur/oxur"
+                            target="_blank"
+                            class="btn btn-primary btn-sm">
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- sm screen menu (drawer) -->
+        <div class="drawer">
+            <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-side">
+                <label for="menu-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+                <div class="bg-base-100 min-h-full w-60 p-5">
+                    <a href="/" class="text-brand-gradient text-2xl font-bold tracking-tighter">
+                        Oxur
+                    </a>
+                    <ul class="menu w-full gap-2 p-0 pt-4">
+                        <li class="font-medium"><a href="/#home">Home</a></li>
+                        <li class="font-medium"><a href="/#features">Features</a></li>
+                        <li class="font-medium"><a href="/docs">Docs</a></li>
+                        <li class="font-medium"><a href="/#download">Download</a></li>
+                        <li class="font-medium">
+                            <a
+                                href="https://github.com/oxur/oxur"
+                                target="_blank"
+                                class="btn btn-primary btn-sm">
+                                GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <main>
+        <!-- Hero Section -->
+<section class="relative py-12 lg:py-24" id="home">
+    <div class="absolute inset-0 w-full bg-[url(/assets/images/landing/bg-gradient.png)] bg-cover bg-center bg-no-repeat opacity-20 dark:opacity-15"></div>
+    <div class="relative z-10 container py-8 lg:py-16">
+        <div class="grid items-center gap-8 lg:grid-cols-2 xl:gap-36">
+            <div class="order-2 lg:order-1">
+                <h1 class="text-center text-3xl/tight leading-10 font-semibold tracking-tight sm:text-start lg:text-4xl/tight">
+                    <span class="text-brand-gradient">Oxur</span>
+                    - A Modern Lisp for the Next Generation of Developers
+                </h1>
+                <h5 class="text-base-content/80 mt-8 text-center sm:text-start lg:text-lg">
+                    Experience the power of Lisp with modern ergonomics, blazing performance, and comprehensive tooling. Build expressive, maintainable systems with confidence.
+                </h5>
+                <div class="mt-8 flex gap-4 max-sm:justify-center sm:mt-16 sm:gap-6">
+                    <a href="/#download" class="btn btn-primary btn-lg">
+                        <span class="iconify lucide--download size-5"></span>
+                        Download Oxur
+                    </a>
+                    <a href="/docs" class="btn btn-outline btn-lg">
+                        <span class="iconify lucide--book-open size-5"></span>
+                        Read the Docs
+                    </a>
+                </div>
+            </div>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">        &lt;div class=&quot;relative order-1 lg:order-2&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;flex justify-center&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;mockup-code max-w-md animate-bounce-slow&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;1&quot;&gt;&lt;code&gt;(defn factorial [n]&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;2&quot;&gt;&lt;code&gt;  (if (&lt;= n 1)&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;3&quot;&gt;&lt;code&gt;    1&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;4&quot;&gt;&lt;code&gt;    (* n (factorial&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;5&quot;&gt;&lt;code&gt;          (- n 1)))))&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;6&quot;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;7&quot;&gt;&lt;code&gt;(factorial 5)&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;pre data-prefix=&quot;8&quot; class=&quot;text-success&quot;&gt;&lt;code&gt;; =&gt; 120&lt;/code&gt;&lt;/pre&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    &lt;!-- Stats Cards --&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    &lt;div class=&quot;mt-12 grid grid-cols-2 gap-8 text-center md:grid-cols-4 lg:mt-16&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;bg-primary/10 hover:bg-primary/15 text-primary rounded-box inline-flex items-center p-3 transition-all&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;span class=&quot;iconify lucide--zap size-8&quot;&gt;&lt;/span&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;mt-5 text-2xl font-semibold lg:text-4xl&quot;&gt;Fast&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;text-base-content/80 mt-1&quot;&gt;Compiled Performance&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;bg-primary/10 hover:bg-primary/15 rounded-box text-primary inline-flex items-center p-3 transition-all&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;span class=&quot;iconify lucide--code size-8&quot;&gt;&lt;/span&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;mt-5 text-2xl font-semibold lg:text-4xl&quot;&gt;Expressive&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;text-base-content/80 mt-1&quot;&gt;Modern Syntax&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;bg-primary/10 hover:bg-primary/15 rounded-box text-primary inline-flex items-center p-3 transition-all&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;span class=&quot;iconify lucide--package size-8&quot;&gt;&lt;/span&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;mt-5 text-2xl font-semibold lg:text-4xl&quot;&gt;Complete&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;text-base-content/80 mt-1&quot;&gt;Rich Standard Library&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;bg-primary/10 hover:bg-primary/15 rounded-box text-primary inline-flex items-center p-3 transition-all&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;span class=&quot;iconify lucide--github size-8&quot;&gt;&lt;/span&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;mt-5 text-2xl font-semibold lg:text-4xl&quot;&gt;Open&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;p class=&quot;text-base-content/80 mt-1&quot;&gt;MIT Licensed&lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">&lt;/div&gt;
+</span></code></pre>
+</section>
+<!-- Features Section -->
+<section class="container py-8 lg:py-16" id="features">
+    <div class="grid gap-8 lg:grid-cols-5 xl:gap-16">
+        <div class="lg:col-span-2">
+            <p class="text-2xl font-semibold lg:text-3xl">Why choose Oxur?</p>
+            <p class="text-base-content/80 mt-4">
+                Oxur combines the timeless power of Lisp with modern language design,
+                giving you a practical tool for building robust, maintainable systems.
+            </p>
+            <div class="mt-8 space-y-3">
+                <div class="flex items-center gap-3">
+                    <span class="iconify lucide--check text-primary size-4.5"></span>
+                    <p>Native compilation for maximum performance</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="iconify lucide--check text-primary size-4.5"></span>
+                    <p>Modern tooling and package management</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="iconify lucide--check text-primary size-4.5"></span>
+                    <p>Comprehensive standard library</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:col-span-3">
+            <div class="card card-border">
+                <div class="card-body">
+                    <span class="iconify lucide--cpu text-primary size-8"></span>
+                    <p class="mt-2 text-xl font-medium">High Performance</p>
+                    <p class="text-base-content/80 mt-2 line-clamp-3">
+                        Built with Rust, Oxur compiles to native code for performance
+                        comparable to systems languages.
+                    </p>
+                </div>
+            </div>
+            <div class="card card-border">
+                <div class="card-body">
+                    <span class="iconify lucide--blocks text-primary size-8"></span>
+                    <p class="mt-2 text-xl font-medium">Powerful Macros</p>
+                    <p class="text-base-content/80 mt-2 line-clamp-3">
+                        Leverage Lisp's legendary macro system to extend the language
+                        and create domain-specific abstractions.
+                    </p>
+                </div>
+            </div>
+            <div class="card card-border">
+                <div class="card-body">
+                    <span class="iconify lucide--wrench text-primary size-8"></span>
+                    <p class="mt-2 text-xl font-medium">Modern Tooling</p>
+                    <p class="text-base-content/80 mt-2 line-clamp-3">
+                        Integrated package manager, REPL, formatter, and LSP server
+                        for seamless development experience.
+                    </p>
+                </div>
+            </div>
+            <div class="card card-border">
+                <div class="card-body">
+                    <span class="iconify lucide--book-open text-primary size-8"></span>
+                    <p class="mt-2 text-xl font-medium">Well Documented</p>
+                    <p class="text-base-content/80 mt-2 line-clamp-3">
+                        Comprehensive documentation, tutorials, and examples to get
+                        you started quickly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FAQ Section -->
+<section class="py-8 lg:py-16" id="faq">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="text-3xl font-semibold lg:text-4xl">Frequently Asked Questions</h2>
+            <p class="text-base-content/80 mt-2">Everything you need to know about Oxur</p>
+        </div>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">    &lt;div class=&quot;mt-8 grid gap-6 md:grid-cols-2&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;div class=&quot;space-y-6&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;collapse-plus border-base-300 collapse border&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;input checked=&quot;checked&quot; name=&quot;faq&quot; type=&quot;radio&quot; aria-label=&quot;open/close&quot; /&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-title text-lg font-medium&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    What is Oxur?
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-content&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;p class=&quot;text-base&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        Oxur is a modern Lisp dialect designed for systems programming,
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        combining the expressive power of Lisp with native performance and modern tooling.
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;collapse-plus border-base-300 collapse border&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;input name=&quot;faq&quot; type=&quot;radio&quot; aria-label=&quot;open/close&quot; /&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-title text-lg font-medium&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    How does Oxur compare to other Lisps?
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-content&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;p class=&quot;text-base&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        Oxur prioritizes modern ergonomics and native performance while
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        maintaining Lisp&#39;s core philosophy of code as data. Built with Rust,
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        it compiles to efficient native code.
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;collapse-plus border-base-300 collapse border&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;input name=&quot;faq&quot; type=&quot;radio&quot; aria-label=&quot;open/close&quot; /&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-title text-lg font-medium&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    What can I build with Oxur?
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-content&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;p class=&quot;text-base&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        Oxur is suitable for systems programming, CLI tools, web services,
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        and any application requiring high performance and expressive code.
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;div class=&quot;space-y-6&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;collapse-plus border-base-300 collapse border&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;input name=&quot;faq&quot; type=&quot;radio&quot; aria-label=&quot;open/close&quot; /&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-title text-lg font-medium&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    Is Oxur production-ready?
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-content&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;p class=&quot;text-base&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        Oxur is under active development. Check our GitHub repository
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        for the current status, roadmap, and planned features.
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;collapse-plus border-base-300 collapse border&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;input name=&quot;faq&quot; type=&quot;radio&quot; aria-label=&quot;open/close&quot; /&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-title text-lg font-medium&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    How can I contribute?
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-content&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;p class=&quot;text-base&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        Contributions are welcome! Visit our GitHub repository for
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        contribution guidelines, open issues, and discussion forums.
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;div class=&quot;collapse-plus border-base-300 collapse border&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;input name=&quot;faq&quot; type=&quot;radio&quot; aria-label=&quot;open/close&quot; /&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-title text-lg font-medium&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    What&#39;s the license?
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;div class=&quot;collapse-content&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;p class=&quot;text-base&quot;&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        Oxur is open source software released under the MIT license,
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        free for both personal and commercial use.
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    &lt;/p&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    &lt;/div&gt;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">&lt;/div&gt;
+</span></code></pre>
+</section>
+<!-- Download CTA Section -->
+<section class="py-8 lg:py-16" id="download">
+    <div class="container text-center">
+        <p class="text-3xl font-semibold lg:text-4xl">Get started with Oxur today!</p>
+        <p class="text-base-content/80 mt-8 inline-block max-w-[600px]">
+            Download the latest release and start building with a modern Lisp that
+            combines elegance with performance.
+        </p>
+        <div class="mt-8 flex justify-center gap-4 sm:gap-6">
+            <a href="/download" class="btn btn-primary btn-lg">
+                <span class="iconify lucide--download size-5"></span>
+                Download
+            </a>
+            <a href="/docs" class="btn btn-outline btn-lg">
+                <span class="iconify lucide--book size-5"></span>
+                Documentation
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="bg-base-200/30 border-base-200 m-5 rounded-xl border">
+    <div class="p-6 sm:container sm:py-12">
+        <p class="text-2xl font-medium">Oxur Lisp</p>
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-6">
+            <div class="inline-flex gap-3">
+                <a href="https://github.com/oxur/oxur" target="_blank"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify lucide--github size-5"></span>
+                </a>
+                <a href="https://twitter.com/oxur" target="_blank"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify lucide--twitter size-5"></span>
+                </a>
+                <a href="mailto:contact@oxur.dev"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify lucide--mail size-5"></span>
+                </a>
+            </div>
+            <div class="join inline-flex">
+                <input
+                    aria-label="Subscribe to updates"
+                    autocomplete="email"
+                    id="email"
+                    class="input join-item input-bordered w-full lg:max-w-xs"
+                    placeholder="email@example.com"
+                    type="email"
+                    required />
+                <button class="btn join-item btn-neutral">Subscribe</button>
+            </div>
+        </div>
+        <div class="mt-8 grid gap-6 sm:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div>
+                <h2 class="text-lg font-medium">Language</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="/#features">Overview</a>
+                    <a href="/docs">Syntax</a>
+                    <a href="/docs#stdlib">Standard Library</a>
+                    <a href="/docs#examples">Examples</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">Resources</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="/docs">Documentation</a>
+                    <a href="/download">Download</a>
+                    <a href="/docs#tutorial">Tutorial</a>
+                    <a href="https://github.com/oxur/oxur/wiki">Wiki</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">Community</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="https://github.com/oxur/oxur">GitHub</a>
+                    <a href="https://github.com/oxur/oxur/discussions">Discussions</a>
+                    <a href="https://github.com/oxur/oxur/issues">Issues</a>
+                    <a href="/docs#contributing">Contributing</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">About</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="/#about">About Oxur</a>
+                    <a href="/docs#license">License</a>
+                    <a href="https://github.com/oxur/oxur/blob/main/CHANGELOG.md">Changelog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="border-base-300 pb-4 text-center">
+    Built with <a class="link-hover link" href="https://cobalt-org.github.io/" target="_blank">Cobalt</a>
+    and <a class="link-hover link" href="https://daisyui.com" target="_blank">daisyUI</a>
+</div>
+
+    <!-- Theme Toggle -->
+<div class="fixed end-5 bottom-5 z-10 flex flex-col items-center">
+    <div class="dropdown dropdown-end dropdown-top">
+        <div class="btn btn-outline bg-base-100 border-base-300 mt-2" role="button" tabindex="0">
+            Theme
+            <span class="iconify lucide--chevron-up size-3.5"></span>
+        </div>
+        <ul class="menu dropdown-content rounded-box bg-base-100 w-52 shadow" tabindex="0">
+            <li>
+                <div
+                    data-theme-control="system"
+                    class="group-[:not([data-theme])]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--laptop size-4.5"></span>
+                    System
+                </div>
+            </li>
+            <li>
+                <div
+                    data-theme-control="light"
+                    class="group-data-[theme=light]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--sun size-4.5"></span>
+                    Light
+                </div>
+            </li>
+            <li>
+                <div
+                    data-theme-control="dark"
+                    class="group-data-[theme=dark]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--moon size-4.5"></span>
+                    Dark
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
