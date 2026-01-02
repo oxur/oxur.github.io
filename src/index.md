@@ -64,7 +64,7 @@ Read the Docs
 <div class="bg-primary/10 hover:bg-primary/15 rounded-box text-primary inline-flex items-center p-3 transition-all">
 <span class="iconify lucide--package size-8"></span>
 </div>
-<p class="mt-5 text-2xl font-semibold lg:text-4xl">Complete</p>
+<p class="mt-5 text-2xl font-semibold lg:text-4xl">Proven</p>
 <p class="text-base-content/80 mt-1">The Rust Standard Library <br/>and Ecosystem</p>
 </div>
 <div>
@@ -100,6 +100,13 @@ which will give you a practical tool for building robust, maintainable systems u
 <span class="iconify lucide--check text-primary size-4.5"></span>
 <p>Comprehensive standard library</p>
 </div>
+<p class="text-base-content/80 mt-4">Also, we've got this guy:
+
+[![Ruxxy the Orux][ruxxy]][ruxxy]
+
+[ruxxy]: assets/images/logo/v2.3-250x.png
+
+</p>
 </div>
 </div>
 <div class="grid gap-6 sm:grid-cols-2 lg:col-span-3">
@@ -128,7 +135,7 @@ and create domain-specific abstractions.
 <span class="iconify lucide--wrench text-primary size-8"></span>
 <p class="mt-2 text-xl font-medium">Modern Tooling</p>
 <p class="text-base-content/80 mt-2 line-clamp-3">
-Full integration with rustc, cargo, and crates, the Oxur compiler, a REPL, formatter, AST inspector, and IDE extensions for a seamless development experience.
+Full integration with rustc, cargo, and crates; will add the Oxur compiler, a REPL, formatter, AST inspector, and IDE extensions for a seamless development experience.
 </p>
 </div>
 </div>
@@ -137,8 +144,7 @@ Full integration with rustc, cargo, and crates, the Oxur compiler, a REPL, forma
 <span class="iconify lucide--book-open text-primary size-8"></span>
 <p class="mt-2 text-xl font-medium">Well Documented</p>
 <p class="text-base-content/80 mt-2 line-clamp-3">
-Comprehensive documentation, tutorials, and examples to get
-you started quickly.
+Have we mentioned our design docs? If design docs are your thing, have we got a treat for you!
 </p>
 </div>
 </div>
@@ -164,7 +170,7 @@ What is Oxur?
 <div class="collapse-content">
 <p class="text-base">
 Oxur is a modern Lisp dialect designed for systems programming,
-combining the expressive power of Lisp with native performance and modern tooling.
+combining the expressive power of Lisp with Rust's native performance and modern tooling.
 </p>
 </div>
 </div>
@@ -177,7 +183,7 @@ How does Oxur compare to other Lisps?
 <p class="text-base">
 Oxur prioritizes modern ergonomics and native performance while
 maintaining Lisp's core philosophy of code as data. Built with Rust,
-it compiles to efficient native code.
+it compiles to efficient native code. Also, have you <em>seen</em> the Rust AST?! It's absolutely BONKERS. One of the best things ever. Seriously. Oxur's AST is just the Rust AST in S-expression form. 🤤
 </p>
 </div>
 </div>
@@ -203,8 +209,8 @@ Is Oxur production-ready?
 </div>
 <div class="collapse-content">
 <p class="text-base">
-Oxur is under active development. Check our GitHub repository
-for the current status, roadmap, and planned features.
+Seriously? Not even close. It's not even ready for <em>alpha testing</em>. Huge swaths of the language haven't even been created yet! Oxur is under active development. Check the Github repository
+for the latest. And don't forget those delicious design docs, either!
 </p>
 </div>
 </div>
@@ -215,8 +221,7 @@ How can I contribute?
 </div>
 <div class="collapse-content">
 <p class="text-base">
-Contributions are welcome! Visit our GitHub repository for
-contribution guidelines, open issues, and discussion forums.
+Contributions are welcome! But there's a good chance most contributions will take place as conversations, feedback, questions, and concerns in our Discord. Check the links below for the invite!
 </p>
 </div>
 </div>
