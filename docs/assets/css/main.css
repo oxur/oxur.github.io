@@ -4075,9 +4075,9 @@ body {
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
       color-scheme: dark;
-      --color-base-100: #181c20;
-      --color-base-200: #22262a;
-      --color-base-300: #2c3034;
+      --color-base-100: #261002;
+      --color-base-200: #361402;
+      --color-base-300: #451A03;
       --color-base-content: #f0f4f8;
       --color-primary: #F97316;
       --color-primary-content: #ffffff;
@@ -4114,9 +4114,9 @@ body {
 @layer base {
   :root:has(input.theme-controller[value=dark]:checked),[data-theme="dark"] {
     color-scheme: dark;
-    --color-base-100: #181c20;
-    --color-base-200: #22262a;
-    --color-base-300: #2c3034;
+    --color-base-100: #261002;
+    --color-base-200: #361402;
+    --color-base-300: #451A03;
     --color-base-content: #f0f4f8;
     --color-primary: #F97316;
     --color-primary-content: #ffffff;

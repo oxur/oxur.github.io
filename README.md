@@ -1,6 +1,6 @@
 # Oxur Website
 
-Official website for [Oxur](https://oxur.ελ) - a modern Lisp dialect for systems programming.
+Official website for [Oxur](https://oxur.li) - a modern Lisp dialect for systems programming.
 
 Built with [Cobalt](https://cobalt-org.github.io/) static site generator, [Tailwind CSS 4](https://tailwindcss.com/), and [DaisyUI 5](https://daisyui.com/).
 
@@ -130,6 +130,6 @@ MIT License - See the main [Oxur project](https://github.com/oxur) for details.
 
 ## Links
 
-- Live Site: https://oxur.ελ
+- Live Site: https://oxur.li
 - Oxur GitHub: https://github.com/oxur
-- Documentation: https://oxur.ελ/docs (coming soon)
+- Documentation: https://oxur.li/docs

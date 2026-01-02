@@ -10,7 +10,7 @@ RESET := \033[0m
 
 # Variables
 SITE_NAME := Oxur Lisp
-SITE_URL := https://oxur.ελ
+SITE_URL := https://oxur.li
 BUILD_TIME := $(shell date -u '+%Y-%m-%dT%H:%M:%SZ')
 GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
