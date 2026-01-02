@@ -78,6 +78,9 @@ dev:
 
 .PHONY: serve
 serve:
+	@echo "$(BLUE)Updating build info...$(RESET)"
+	@sed -i '' "s/    commit_id: \".*\"/    commit_id: \"$(GIT_COMMIT)\"/" _cobalt.yml
+	@sed -i '' "s/    build_time: \".*\"/    build_time: \"$(BUILD_TIME)\"/" _cobalt.yml
 	@echo "$(BLUE)Starting Cobalt server...$(RESET)"
 	@echo "$(GREEN)→ Serving from $(SOURCE_DIR)/ at http://localhost:1024$(RESET)"
 	@$(COBALT) serve
@@ -99,6 +102,9 @@ build: build-cobalt build-css
 
 .PHONY: build-cobalt
 build-cobalt:
+	@echo "$(BLUE)Updating build info...$(RESET)"
+	@sed -i '' "s/    commit_id: \".*\"/    commit_id: \"$(GIT_COMMIT)\"/" _cobalt.yml
+	@sed -i '' "s/    build_time: \".*\"/    build_time: \"$(BUILD_TIME)\"/" _cobalt.yml
 	@echo "$(BLUE)Building site with Cobalt...$(RESET)"
 	@echo "$(CYAN)• Source: $(SOURCE_DIR)/$(RESET)"
 	@echo "$(CYAN)• Destination: $(DEST_DIR)/$(RESET)"
