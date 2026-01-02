@@ -39,7 +39,7 @@ To view the list of design docs and their current status:
 
 [![oxd cli tool screenshot of list command][oxd-list-screenshot]][oxd-list-screenshot]
 
-[oxd-list-screenshot]: assets/images/screenshots/oxd-list.png
+[oxd-list-screenshot]: /assets/images/screenshots/oxd-list.png
 
 Note that those documents have metadata and they are tracked via the oxd tool, receive updates, etc.
 
@@ -57,4 +57,4 @@ We also have less formal documents that do not have their metadata tracked and d
 
 [![oxd cli tool screenshot of list dev command][oxd-list-dev-screenshot]][oxd-list-dev-screenshot]
 
-[oxd-list-dev-screenshot]: assets/images/screenshots/oxd-list-dev.png
+[oxd-list-dev-screenshot]: /assets/images/screenshots/oxd-list-dev.png

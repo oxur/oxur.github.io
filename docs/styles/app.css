@@ -49,6 +49,10 @@ body {
     font-size: smaller;
 }
 
+pre code.hljs {
+    @apply p-6 rounded-lg;
+}
+
 @theme {
     --animate-bounce-slow: bounce-slow 2s infinite alternate;
 

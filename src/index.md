@@ -31,15 +31,16 @@ Read the Docs
 
 <div class="relative order-1 lg:order-2">
 <div class="flex justify-center">
-<div class="mockup-code max-w-md animate-bounce-slow">
-<pre data-prefix="1"><code>(deffn fibonacci (i32) (:> i32)</code></pre>
-<pre data-prefix="2"><code>  (0 0)</code></pre>
-<pre data-prefix="3"><code>  (1 1)</code></pre>
-<pre data-prefix="4"><code>  (n (+ (fibonacci (- n 1))</code></pre>
-<pre data-prefix="5"><code>        (fibonacci (- n 2)))))</code></pre>
-<pre data-prefix=""><code></code></pre>
 
+<div class="max-w-md animate-bounce-slow">
+<pre class="p-12"><code class="language-oxur">(deffn fibonacci (n:i32) (:> i32)
+  (0 0)
+  (1 1)
+  (n (+ (fibonacci (- n 1))
+        (fibonacci (- n 2)))))
+</code></pre>
 </div>
+
 </div>
 </div>
 </div>

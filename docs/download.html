@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/assets/css/main.css" />
+<link rel="stylesheet" href="/assets/css/atom-one-dark.min.css" />
 
 </head>
 <body>
@@ -169,9 +170,9 @@
     <a class="link-hover link" href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>,
     and <a class="link-hover link" href="https://daisyui.com" target="_blank">daisyUI</a>
     ・
-    58a9218
+    12eab87
     ・
-    2026-01-02T22:03:10Z
+    2026-01-02T23:38:08Z
 </div>
 
 <!-- Theme Toggle -->
@@ -211,6 +212,42 @@
 </div>
 
 
+<script src="/assets/js/highlight-all.min.js"></script>
+<script>
+// Add Oxur-specific keywords to Clojure highlighting
+if (hljs && hljs.getLanguage('clojure')) {
+  const clojureDef = hljs.getLanguage('clojure');
+
+  hljs.registerLanguage('oxur', function(hljs) {
+    // Create a pattern to match Oxur definition forms
+    const oxurDefPattern = {
+      begin: '\\(\\s*(deffn|defimpl)\\b',
+      end: '(\\[|\\{|\\()',
+      excludeEnd: true,
+      keywords: {
+        keyword: 'deffn defimpl'
+      },
+      contains: [
+        {
+          className: 'title',
+          begin: '[a-zA-Z_\\-!.?+*=<>&#\'][a-zA-Z_\\-!.?+*=<>&#\'0-9/]*',
+          relevance: 0
+        }
+      ]
+    };
+
+    // Combine with Clojure contains at the front (higher priority)
+    const contains = [oxurDefPattern].concat(clojureDef.contains || []);
+
+    return {
+      name: 'Oxur',
+      aliases: ['lisp'],
+      contains: contains
+    };
+  });
+}
+hljs.highlightAll();
+</script>
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
