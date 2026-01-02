@@ -1,26 +1,28 @@
 {
-  "name": "oxur-site",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "css:build": "postcss src/styles/app.css -o docs/assets/css/main.css",
-    "css:build:dev": "postcss src/styles/app.css -o src/assets/css/main.css",
-    "css:watch": "postcss src/styles/app.css -o src/assets/css/main.css --watch",
-    "cobalt:build": "cobalt build",
-    "cobalt:serve": "cobalt serve",
-    "build": "npm run cobalt:build && npm run css:build",
-    "dev": "npm run css:build:dev && npm-run-all --parallel css:watch cobalt:serve",
-    "copy-reference": "cp -r site/html src/reference"
-  },
-  "devDependencies": {
-    "@iconify-json/lucide": "^1.2.24",
-    "@iconify/tailwind4": "^1.0.3",
-    "@tailwindcss/postcss": "^4.0.3",
-    "autoprefixer": "^10.4.20",
-    "daisyui": "^5.0.0-beta.6",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.49",
-    "postcss-cli": "^11.0.0",
-    "tailwindcss": "^4.0.3"
-  }
+    "name": "oxur-site",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "css:build": "postcss src/styles/app.css -o docs/assets/css/main.css",
+        "css:build:dev": "postcss src/styles/app.css -o src/assets/css/main.css",
+        "css:watch": "postcss src/styles/app.css -o src/assets/css/main.css --watch",
+        "cobalt:build": "cobalt build",
+        "cobalt:serve": "cobalt serve",
+        "build": "npm run cobalt:build && npm run css:build",
+        "dev": "npm run css:build:dev && npm-run-all --parallel css:watch cobalt:serve",
+        "copy-reference": "cp -r site/html src/reference"
+    },
+    "devDependencies": {
+        "@iconify-json/lucide": "^1.2.24",
+        "@iconify-json/simple-icons": "^1.2.64",
+        "@iconify/tailwind4": "^1.0.3",
+        "@tailwindcss/postcss": "^4.0.3",
+        "@tailwindcss/typography": "^0.5.19",
+        "autoprefixer": "^10.4.20",
+        "daisyui": "^5.0.0-beta.6",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.49",
+        "postcss-cli": "^11.0.0",
+        "tailwindcss": "^4.0.3"
+    }
 }

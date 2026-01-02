@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="group/html">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <meta name="description" content="{{ page.description | default: site.description }}">
-
-    <!-- Tailwind CSS CDN (temporary - replace with your purchased template) -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="/assets/css/main.css">
+{% include "head.liquid" %}
 </head>
 <body>
-    {% include "header.liquid" %}
+{% include "topbar.liquid" %}
 
-    <main>
-        {{ page.content }}
-    </main>
+<main class="container py-8 lg:py-16">
+{{ page.content }}
+</main>
 
-    {% include "footer.liquid" %}
+{% include "footer.liquid" %}
+{% include "theme-toggle.liquid" %}
 
-    <script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
 </body>
 </html>

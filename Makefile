@@ -41,8 +41,7 @@ help:
 	@echo "$(GREEN)Building:$(RESET)"
 	@echo "  $(YELLOW)make build$(RESET)            - Build production site (Cobalt + CSS)"
 	@echo "  $(YELLOW)make build-cobalt$(RESET)     - Build with Cobalt only"
-	@echo "  $(YELLOW)make build-css$(RESET)        - Compile CSS for production"
-	@echo "  $(YELLOW)make build-css-dev$(RESET)    - Compile CSS for development"
+	@echo "  $(YELLOW)make build-css$(RESET)        - Compile CSS"
 	@echo ""
 	@echo "$(GREEN)Cleaning:$(RESET)"
 	@echo "  $(YELLOW)make clean$(RESET)            - Clean build artifacts and caches"
@@ -77,7 +76,7 @@ dev:
 	@$(NPM) run dev
 
 .PHONY: serve
-serve:
+serve: clean build-css-dev
 	@echo "$(BLUE)Updating build info...$(RESET)"
 	@sed -i '' "s/    commit_id: \".*\"/    commit_id: \"$(GIT_COMMIT)\"/" _cobalt.yml
 	@sed -i '' "s/    build_time: \".*\"/    build_time: \"$(BUILD_TIME)\"/" _cobalt.yml
@@ -121,9 +120,9 @@ build-css:
 
 .PHONY: build-css-dev
 build-css-dev:
-	@echo "$(BLUE)Compiling CSS for development...$(RESET)"
+	@echo "$(BLUE)Compiling CSS for dev...$(RESET)"
 	@echo "$(CYAN)• Source: $(CSS_SOURCE)$(RESET)"
-	@echo "$(CYAN)• Output: $(CSS_OUTPUT_DEV)$(RESET)"
+	@echo "$(CYAN)• Output: $(CSS_OUTPUT_PROD)$(RESET)"
 	@$(NPM) run css:build:dev
 	@echo "$(GREEN)✓ CSS compilation complete$(RESET)"
 
@@ -133,6 +132,7 @@ clean:
 	@echo "$(BLUE)Cleaning build artifacts...$(RESET)"
 	@rm -rf $(DEST_DIR)/*.html
 	@rm -rf $(DEST_DIR)/assets/*.css $(DEST_DIR)/assets/*.js
+	@rm -rf $(SOURCE_DIR)/assets/css/main.css
 	@rm -rf .cobalt/
 	@echo "$(GREEN)✓ Clean complete$(RESET)"
 

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" class="group/html">
+<head>
+<meta charset="utf-8" />
+<title>Documentation | Oxur Lisp</title>
+<meta content="Complete documentation for Oxur - a modern Lisp dialect for systems programming" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Theme favicon -->
+<link rel="shortcut icon" href="/assets/images/favicon.ico" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+
+</head>
+<body>
+<div
+    id="layout-topbar"
+    class="data-[at-top=false]:bg-base-100/95 border-base-300 fixed inset-x-0 top-0 z-50 container bg-transparent backdrop-blur-sm transition-all data-[at-top=false]:max-sm:border-b sm:rounded-full data-[at-top=false]:sm:top-4 data-[at-top=false]:sm:px-8 data-[at-top=false]:sm:shadow">
+    <div>
+        <nav class="flex items-center justify-between py-2">
+            <div class="flex items-center gap-2">
+                <label
+                    for="menu-drawer"
+                    id="menu-drawer-trigger"
+                    aria-label="open sidebar"
+                    class="btn btn-square btn-ghost btn-sm lg:hidden">
+                    <span class="iconify lucide--menu size-5"></span>
+                </label>
+
+                <!-- Navbar Brand logo -->
+                <a href="/" class="text-brand-gradient text-2xl font-semibold tracking-tighter">
+                    Oxur
+                </a>
+            </div>
+
+            <div class="max-lg:hidden">
+                <ul class="menu menu-horizontal gap-2 px-1">
+                    <li class="font-medium"><a href="/#home">Home</a></li>
+                    <li class="font-medium"><a href="/#features">Features</a></li>
+                    <li class="font-medium"><a href="/docs">Docs</a></li>
+                    <li class="font-medium"><a href="https://github.com/oxur/oxur/releases">Download</a></li>
+                    <li class="font-medium">
+                        <a
+                            href="https://github.com/oxur/oxur"
+                            target="_blank"
+                            class="btn btn-primary btn-sm">
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- sm screen menu (drawer) -->
+        <div class="drawer">
+            <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-side">
+                <label for="menu-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+                <div class="bg-base-100 min-h-full w-60 p-5">
+                    <a href="/" class="text-brand-gradient text-2xl font-bold tracking-tighter">
+                        Oxur
+                    </a>
+                    <ul class="menu w-full gap-2 p-0 pt-4">
+                        <li class="font-medium"><a href="/#home">Home</a></li>
+                        <li class="font-medium"><a href="/#features">Features</a></li>
+                        <li class="font-medium"><a href="/docs">Docs</a></li>
+                        <li class="font-medium"><a href="https://github.com/oxur/oxur/releases">Download</a></li>
+                        <li class="font-medium">
+                            <a
+                                href="https://github.com/oxur/oxur"
+                                target="_blank"
+                                class="btn btn-primary btn-sm">
+                                GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<main class="container py-8 lg:py-16">
+<div class="prose prose-lg max-w-none">
+<h1>Oxur Documentation</h1>
+<p>Welcome to the Oxur documentation! Oxur is a modern Lisp dialect designed for systems programming, combining the expressive power of Lisp with native performance and contemporary tooling.</p>
+<div class="alert alert-info mt-8">
+  <span class="iconify lucide--info size-5"></span>
+  <span>Oxur is under active development. This documentation reflects the planned features and current implementation status.</span>
+</div>
+<h2>Getting Started</h2>
+<h3>Installation</h3>
+<p>Oxur can be installed using several methods:</p>
+<p><strong>Via Cargo (Rust package manager):</strong></p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;">cargo</span><span style="color:#c0c5ce;"> install oxur
+</span></code></pre>
+<p><strong>From source:</strong></p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;">git</span><span style="color:#c0c5ce;"> clone https://github.com/oxur/oxur.git
+</span><span style="color:#96b5b4;">cd</span><span style="color:#c0c5ce;"> oxur
+</span><span style="color:#8fa1b3;">cargo</span><span style="color:#c0c5ce;"> build</span><span style="color:#bf616a;"> --release
+</span></code></pre>
+<p><strong>Binary releases:</strong>
+Download pre-built binaries from the <a href="https://github.com/oxur/oxur/releases">releases page</a>.</p>
+<h3>Quick Start</h3>
+<p>Create your first Oxur program:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;">;; hello.oxur
+</span><span style="color:#c0c5ce;">(defn main []
+</span><span style="color:#c0c5ce;">  (println &quot;</span><span style="color:#a3be8c;">Hello, World!</span><span style="color:#c0c5ce;">&quot;))
+</span></code></pre>
+<p>Run it:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;">oxur</span><span style="color:#c0c5ce;"> run hello.oxur
+</span></code></pre>
+<p>Or compile to a native binary:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;">oxur</span><span style="color:#c0c5ce;"> build hello.oxur</span><span style="color:#bf616a;"> -o</span><span style="color:#c0c5ce;"> hello
+</span><span style="color:#8fa1b3;">./hello
+</span></code></pre>
+<h2>Language Features</h2>
+<h3>Modern Lisp Syntax</h3>
+<p>Oxur provides familiar Lisp syntax with modern enhancements:</p>
+<ul>
+<li><strong>S-expressions</strong>: Classic parenthesized expressions</li>
+<li><strong>Immutability by default</strong>: Variables are immutable unless explicitly marked mutable</li>
+<li><strong>Type inference</strong>: Strong static typing with inference</li>
+<li><strong>Pattern matching</strong>: Powerful destructuring and matching</li>
+<li><strong>Hygenic macros</strong>: Safe macro system with proper scoping</li>
+</ul>
+<h3>Performance</h3>
+<p>Built with Rust and compiling to native code, Oxur delivers:</p>
+<ul>
+<li>Zero-cost abstractions</li>
+<li>Minimal runtime overhead</li>
+<li>Direct system calls</li>
+<li>Efficient memory management</li>
+</ul>
+<h3>Tooling</h3>
+<p>Oxur comes with a complete toolchain:</p>
+<ul>
+<li><strong>REPL</strong>: Interactive development environment</li>
+<li><strong>Package Manager</strong>: Dependency management and project scaffolding</li>
+<li><strong>LSP Server</strong>: IDE integration for autocomplete, goto definition, etc.</li>
+<li><strong>Formatter</strong>: Consistent code formatting</li>
+<li><strong>Debugger</strong>: Step-through debugging support</li>
+</ul>
+<h2>Syntax Basics</h2>
+<h3>Variables and Bindings</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;">;; Immutable binding
+</span><span style="color:#c0c5ce;">(def x </span><span style="color:#d08770;">42</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Mutable variable
+</span><span style="color:#c0c5ce;">(def mut counter </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">set</span><span style="color:#c0c5ce;">! counter (+ counter </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Local bindings
+</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> [a </span><span style="color:#d08770;">10
+</span><span style="color:#c0c5ce;">      b </span><span style="color:#d08770;">20</span><span style="color:#c0c5ce;">]
+</span><span style="color:#c0c5ce;">  (+ a b))
+</span></code></pre>
+<h3>Functions</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;">;; Function definition
+</span><span style="color:#c0c5ce;">(defn factorial [n]
+</span><span style="color:#c0c5ce;">  (</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(&lt;= n </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">1
+</span><span style="color:#c0c5ce;">    (* n (factorial (- n </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)))))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Anonymous functions
+</span><span style="color:#c0c5ce;">(def square (fn [x] (* x x)))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Short lambda syntax
+</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">map</span><span style="color:#c0c5ce;"> #(* % %) [</span><span style="color:#d08770;">1 2 3 4 5</span><span style="color:#c0c5ce;">])
+</span></code></pre>
+<h3>Data Structures</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;">;; Lists
+</span><span style="color:#c0c5ce;">(def numbers &#39;(</span><span style="color:#d08770;">1 2 3 4 5</span><span style="color:#c0c5ce;">))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Vectors (efficient random access)
+</span><span style="color:#c0c5ce;">(def coords [</span><span style="color:#d08770;">10 20 30</span><span style="color:#c0c5ce;">])
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Maps
+</span><span style="color:#c0c5ce;">(def person {:name &quot;</span><span style="color:#a3be8c;">Alice</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">             :age </span><span style="color:#d08770;">30
+</span><span style="color:#c0c5ce;">             :email &quot;</span><span style="color:#a3be8c;">alice@example.com</span><span style="color:#c0c5ce;">&quot;})
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Sets
+</span><span style="color:#c0c5ce;">(def unique #{</span><span style="color:#d08770;">1 2 3 4 5</span><span style="color:#c0c5ce;">})
+</span></code></pre>
+<h3>Control Flow</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;">;; Conditionals
+</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(&gt; x </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">positive</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">non-positive</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Cond for multiple branches
+</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">cond
+</span><span style="color:#c0c5ce;">  (&lt; x </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">) &quot;</span><span style="color:#a3be8c;">negative</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  (&gt; x </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">) &quot;</span><span style="color:#a3be8c;">positive</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  :</span><span style="color:#b48ead;">else </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">zero</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Pattern matching
+</span><span style="color:#c0c5ce;">(match value
+</span><span style="color:#c0c5ce;">  [:ok result] result
+</span><span style="color:#c0c5ce;">  [:err msg] (println &quot;</span><span style="color:#a3be8c;">Error:</span><span style="color:#c0c5ce;">&quot; msg))
+</span></code></pre>
+<h3>Macros</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;">;; Define a macro
+</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">defmacro </span><span style="color:#8fa1b3;">when</span><span style="color:#c0c5ce;"> [test &amp; body]
+</span><span style="color:#c0c5ce;">  `(</span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> ~test
+</span><span style="color:#c0c5ce;">     (</span><span style="color:#b48ead;">do</span><span style="color:#c0c5ce;"> ~@body)))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Usage
+</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">when </span><span style="color:#c0c5ce;">(= day &quot;</span><span style="color:#a3be8c;">Friday</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">  (println &quot;</span><span style="color:#a3be8c;">Weekend is near!</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">  (celebrate))
+</span></code></pre>
+<h2>Examples</h2>
+<h3>Fibonacci Sequence</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">(defn fib [n]
+</span><span style="color:#c0c5ce;">  (match n
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">0 0
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">1 1
+</span><span style="color:#c0c5ce;">    _ (+ (fib (- n </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)) (fib (- n </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)))))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; With memoization
+</span><span style="color:#c0c5ce;">(def fib-memo
+</span><span style="color:#c0c5ce;">  (memoize
+</span><span style="color:#c0c5ce;">    (fn [n]
+</span><span style="color:#c0c5ce;">      (match n
+</span><span style="color:#c0c5ce;">        </span><span style="color:#d08770;">0 0
+</span><span style="color:#c0c5ce;">        </span><span style="color:#d08770;">1 1
+</span><span style="color:#c0c5ce;">        _ (+ (fib-memo (- n </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)) (fib-memo (- n </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)))))))
+</span></code></pre>
+<h3>File I/O</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">(use oxur.io)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Read file
+</span><span style="color:#c0c5ce;">(def content (io/</span><span style="color:#96b5b4;">read</span><span style="color:#c0c5ce;">-file &quot;</span><span style="color:#a3be8c;">data.txt</span><span style="color:#c0c5ce;">&quot;))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Write file
+</span><span style="color:#c0c5ce;">(io/</span><span style="color:#96b5b4;">write</span><span style="color:#c0c5ce;">-file &quot;</span><span style="color:#a3be8c;">output.txt</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">Hello, Oxur!</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">;; Process lines
+</span><span style="color:#c0c5ce;">(io/</span><span style="color:#b48ead;">with</span><span style="color:#c0c5ce;">-reader &quot;</span><span style="color:#a3be8c;">input.txt</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  (fn [reader]
+</span><span style="color:#c0c5ce;">    (doseq [line (io/lines reader)]
+</span><span style="color:#c0c5ce;">      (println line))))
+</span></code></pre>
+<h3>Web Server</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">(use oxur.http)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">(defn handler [request]
+</span><span style="color:#c0c5ce;">  {:status </span><span style="color:#d08770;">200
+</span><span style="color:#c0c5ce;">   :headers {&quot;</span><span style="color:#a3be8c;">Content-Type</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">text/plain</span><span style="color:#c0c5ce;">&quot;}
+</span><span style="color:#c0c5ce;">   :body &quot;</span><span style="color:#a3be8c;">Hello from Oxur!</span><span style="color:#c0c5ce;">&quot;})
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">(defn main []
+</span><span style="color:#c0c5ce;">  (http/serve handler {:port </span><span style="color:#d08770;">8080</span><span style="color:#c0c5ce;">})
+</span><span style="color:#c0c5ce;">  (println &quot;</span><span style="color:#a3be8c;">Server running on port 8080</span><span style="color:#c0c5ce;">&quot;))
+</span></code></pre>
+<h2>Standard Library {#stdlib}</h2>
+<p>The Oxur standard library provides comprehensive functionality:</p>
+<h3>Core</h3>
+<ul>
+<li><strong>Collections</strong>: List, vector, map, set operations</li>
+<li><strong>String</strong>: String manipulation and formatting</li>
+<li><strong>Math</strong>: Mathematical functions and constants</li>
+<li><strong>IO</strong>: File and stream operations</li>
+</ul>
+<h3>Concurrency</h3>
+<ul>
+<li><strong>Channels</strong>: CSP-style message passing</li>
+<li><strong>Futures</strong>: Asynchronous computation</li>
+<li><strong>Atoms</strong>: Atomic references for shared state</li>
+</ul>
+<h3>System</h3>
+<ul>
+<li><strong>Process</strong>: Process spawning and management</li>
+<li><strong>FS</strong>: File system operations</li>
+<li><strong>Net</strong>: Network programming</li>
+<li><strong>Time</strong>: Date and time handling</li>
+</ul>
+<h3>Utilities</h3>
+<ul>
+<li><strong>JSON</strong>: JSON parsing and generation</li>
+<li><strong>Regex</strong>: Regular expressions</li>
+<li><strong>Testing</strong>: Unit testing framework</li>
+<li><strong>Logging</strong>: Structured logging</li>
+</ul>
+<h2>Project Structure</h2>
+<p>A typical Oxur project:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">my-project/
+</span><span style="color:#c0c5ce;">├── Oxur.toml          # Project configuration
+</span><span style="color:#c0c5ce;">├── src/
+</span><span style="color:#c0c5ce;">│   ├── main.oxur      # Main entry point
+</span><span style="color:#c0c5ce;">│   └── lib/
+</span><span style="color:#c0c5ce;">│       └── utils.oxur # Library modules
+</span><span style="color:#c0c5ce;">├── tests/
+</span><span style="color:#c0c5ce;">│   └── test_main.oxur # Unit tests
+</span><span style="color:#c0c5ce;">└── README.md
+</span></code></pre>
+<h3>Oxur.toml</h3>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">[package]
+</span><span style="color:#c0c5ce;">name = &quot;my-project&quot;
+</span><span style="color:#c0c5ce;">version = &quot;0.1.0&quot;
+</span><span style="color:#c0c5ce;">authors = [&quot;Your Name &lt;you@example.com&gt;&quot;]
+</span><span style="color:#c0c5ce;">license = &quot;MIT&quot;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">[dependencies]
+</span><span style="color:#c0c5ce;">http = &quot;0.2&quot;
+</span><span style="color:#c0c5ce;">json = &quot;0.1&quot;
+</span></code></pre>
+<h2>Contributing {#contributing}</h2>
+<p>We welcome contributions to Oxur! Here's how to get involved:</p>
+<h3>Development Setup</h3>
+<ol>
+<li>Fork the repository</li>
+<li>Clone your fork: <code>git clone https://github.com/yourusername/oxur.git</code></li>
+<li>Create a branch: <code>git checkout -b feature/your-feature</code></li>
+<li>Make your changes</li>
+<li>Run tests: <code>cargo test</code></li>
+<li>Submit a pull request</li>
+</ol>
+<h3>Contribution Guidelines</h3>
+<ul>
+<li>Follow the existing code style</li>
+<li>Add tests for new features</li>
+<li>Update documentation</li>
+<li>Write clear commit messages</li>
+<li>Be respectful and constructive</li>
+</ul>
+<h3>Areas for Contribution</h3>
+<ul>
+<li><strong>Core language features</strong>: Implement new language constructs</li>
+<li><strong>Standard library</strong>: Add new modules and functions</li>
+<li><strong>Tooling</strong>: Improve REPL, formatter, LSP server</li>
+<li><strong>Documentation</strong>: Examples, tutorials, guides</li>
+<li><strong>Testing</strong>: Increase test coverage</li>
+<li><strong>Performance</strong>: Optimize critical paths</li>
+</ul>
+<h2>Resources</h2>
+<h3>Community</h3>
+<ul>
+<li><strong>GitHub</strong>: <a href="https://github.com/oxur/oxur">github.com/oxur/oxur</a></li>
+<li><strong>Discussions</strong>: <a href="https://github.com/oxur/oxur/discussions">github.com/oxur/oxur/discussions</a></li>
+<li><strong>Issues</strong>: <a href="https://github.com/oxur/oxur/issues">github.com/oxur/oxur/issues</a></li>
+<li><strong>Mastodon</strong>: <a href="https://fosstodon.org/@oxur">@oxur@fosstodon.org</a></li>
+</ul>
+<h3>Learning Resources</h3>
+<ul>
+<li><a href="#tutorial">Tutorial</a> - Step-by-step introduction</li>
+<li><a href="https://github.com/oxur/oxur/tree/main/examples">Examples</a> - Code examples</li>
+<li><a href="https://docs.rs/oxur">API Reference</a> - Complete API documentation</li>
+<li><a href="https://github.com/oxur/oxur/wiki">Wiki</a> - Community guides</li>
+</ul>
+<h2>License {#license}</h2>
+<p>Oxur is open source software released under the <strong>MIT License</strong>.</p>
+<p>You are free to use, modify, and distribute Oxur for both personal and commercial purposes. See the <a href="https://github.com/oxur/oxur/blob/main/LICENSE">LICENSE</a> file for full details.</p>
+<hr />
+<div class="text-center mt-16">
+  <p class="text-lg">Questions or feedback?</p>
+  <div class="mt-4 flex gap-4 justify-center">
+    <a href="https://discord.gg/mndyrJD4" class="btn btn-primary">
+      <span class="iconify lucide--message-circle size-5"></span>
+      Join Discussion
+    </a>
+    <a href="https://github.com/oxur/oxur/issues" class="btn btn-outline">
+      <span class="iconify lucide--bug size-5"></span>
+      Report Issue
+    </a>
+  </div>
+</div>
+</div>
+
+</main>
+
+<footer class="bg-base-200/30 border-base-200 m-5 rounded-xl border">
+    <div class="p-6 sm:container sm:py-12">
+        <p class="text-2xl font-medium">Oxur Lisp</p>
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-6">
+            <div class="inline-flex gap-3">
+                <a href="https://github.com/oxur/oxur" target="_blank"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify lucide--github size-5"></span>
+                </a>
+                <a href="https://fosstodon.org/@oxur" target="_blank"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify simple-icons--mastodon size-5"></span>
+                </a>
+                <a href="mailto:oxur.maintainers@billo.systems"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify lucide--mail size-5"></span>
+                </a>
+            </div>
+            <div class="join inline-flex">
+                <input
+                    aria-label="Subscribe to updates"
+                    autocomplete="email"
+                    id="email"
+                    class="input join-item input-bordered w-full lg:max-w-xs"
+                    placeholder="email@example.com"
+                    type="email"
+                    required />
+                <button class="btn join-item btn-neutral">Subscribe</button>
+            </div>
+        </div>
+        <div class="mt-8 grid gap-6 sm:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div>
+                <h2 class="text-lg font-medium">Language</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="/#features">Overview</a>
+                    <a href="/docs">Syntax</a>
+                    <a href="/docs#stdlib">Standard Library</a>
+                    <a href="/docs#examples">Examples</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">Resources</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="/docs">Documentation</a>
+                    <a href="https://github.com/oxur/oxur/releases">Download</a>
+                    <a href="/docs#tutorial">Tutorial</a>
+                    <a href="https://github.com/oxur/oxur/wiki">Wiki</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">Community</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="https://github.com/oxur/oxur">GitHub</a>
+                    <a href="https://discord.gg/mndyrJD4">Discord</a>
+                    <a href="https://github.com/oxur/oxur/issues">Issues</a>
+                    <a href="/docs#contributing">Contributing</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">About</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="https://github.com/oxur/oxur/blob/main/crates/design/docs/05-active/0001-oxur-letter-of-intent.md">About Oxur</a>
+                    <a href="/docs#license">License</a>
+                    <a href="https://github.com/oxur/oxur/blob/main/CHANGELOG.md">Changelog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="subfooter">
+    Built with <a class="link-hover link" href="https://cobalt-org.github.io/" target="_blank">Cobalt</a>,
+    <a class="link-hover link" href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>,
+    and <a class="link-hover link" href="https://daisyui.com" target="_blank">daisyUI</a>
+    ・
+    0f5fed0
+    ・
+    2026-01-02T19:29:24Z
+</div>
+
+<!-- Theme Toggle -->
+<div class="fixed end-5 bottom-5 z-10 flex flex-col items-center">
+    <div class="dropdown dropdown-end dropdown-top">
+        <div class="btn btn-outline bg-base-100 border-base-300 mt-2" role="button" tabindex="0">
+            Theme
+            <span class="iconify lucide--chevron-up size-3.5"></span>
+        </div>
+        <ul class="menu dropdown-content rounded-box bg-base-100 w-52 shadow" tabindex="0">
+            <li>
+                <div
+                    data-theme-control="system"
+                    class="group-[:not([data-theme])]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--laptop size-4.5"></span>
+                    System
+                </div>
+            </li>
+            <li>
+                <div
+                    data-theme-control="light"
+                    class="group-data-[theme=light]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--sun size-4.5"></span>
+                    Light
+                </div>
+            </li>
+            <li>
+                <div
+                    data-theme-control="dark"
+                    class="group-data-[theme=dark]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--moon size-4.5"></span>
+                    Dark
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

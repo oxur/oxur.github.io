@@ -6,7 +6,7 @@
     name: "dark";
     color-scheme: dark;
     prefersdark: true;
-    --color-primary: #fc766a;
+    --color-primary: #F97316;
     --color-primary-content: #ffffff;
     --color-secondary: #494949;
     --color-secondary-content: #ffffff;
@@ -28,6 +28,9 @@
     --color-base-300: #2c3034;
     --color-base-content: #f0f4f8;
 
+    --color-subfooter-bg: #1a1e22;
+    --color-subfooter-text: #8a3507;
+
     --radius-field: 0.25rem;
     --radius-box: 0.25rem;
     --rounded-box: 0.25rem;
@@ -46,7 +49,7 @@
     name: "light";
     default: true;
     color-scheme: light;
-    --color-primary: #fc766a;
+    --color-primary: #F97316;
     --color-primary-content: #ffffff;
     --color-secondary: #494949;
     --color-secondary-content: #ffffff;
@@ -67,6 +70,9 @@
     --color-base-200: #eef0f2;
     --color-base-300: #dcdee0;
     --color-base-content: #1e2328;
+
+    --color-subfooter-bg: #f8f9fa;
+    --color-subfooter-text: #a94109;
 
     --radius-field: 0.25rem;
     --radius-box: 0.25rem;

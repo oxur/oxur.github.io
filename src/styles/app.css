@@ -4,8 +4,10 @@
 @import "./daisyui.css";
 
 @plugin "@iconify/tailwind4" {
-    prefixes: lucide;
+    prefixes: lucide, simple-icons;
 }
+
+@plugin "@tailwindcss/typography";
 
 @theme {
     --font-body: "Figtree", sans-serif;
@@ -31,13 +33,20 @@ body {
 }
 
 .text-brand-gradient {
-    background: linear-gradient(to right, #fc766a 0%, #cc3c08 100%);
+    background: linear-gradient(to right, #F97316 0%, #6c2905 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .bg-brand-gradient {
-    background: linear-gradient(to right, #ee4d14 0%, #c03604 100%);
+    background: linear-gradient(to right, #F97316 0%, #6c2905 100%);
+}
+
+.subfooter {
+    @apply pb-4 text-center text-sm;
+    background-color: transparent;
+    color: var(--color-subfooter-text);
+    font-size: smaller;
 }
 
 @theme {
@@ -47,6 +56,7 @@ body {
         0% {
             transform: translateY(0);
         }
+
         to {
             transform: translateY(-12px);
         }

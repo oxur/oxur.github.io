@@ -15,7 +15,7 @@ description: Oxur - A modern, expressive Lisp dialect for systems programming
  - A Modern Lisp for the Next Generation of Developers
 </h1>
 <h5 class="text-base-content/80 mt-8 text-center sm:text-start lg:text-lg">
-Experience the power of Lisp with modern ergonomics, blazing performance, and comprehensive tooling. Build expressive, maintainable systems with confidence.
+Experience the power of Lisp built on Rust—with modern ergonomics, blazing performance, and comprehensive tooling. Build expressive, maintainable systems with confidence.
 </h5>
 <div class="mt-8 flex gap-4 max-sm:justify-center sm:mt-16 sm:gap-6">
 <a href="/#download" class="btn btn-primary btn-lg">
@@ -32,14 +32,13 @@ Read the Docs
 <div class="relative order-1 lg:order-2">
 <div class="flex justify-center">
 <div class="mockup-code max-w-md animate-bounce-slow">
-<pre data-prefix="1"><code>(defn factorial [n]</code></pre>
-<pre data-prefix="2"><code>  (if (&lt;= n 1)</code></pre>
-<pre data-prefix="3"><code>    1</code></pre>
-<pre data-prefix="4"><code>    (* n (factorial</code></pre>
-<pre data-prefix="5"><code>          (- n 1)))))</code></pre>
-<pre data-prefix="6"><code></code></pre>
-<pre data-prefix="7"><code>(factorial 5)</code></pre>
-<pre data-prefix="8" class="text-success"><code>; =&gt; 120</code></pre>
+<pre data-prefix="1"><code>(deffn fibonacci (i32) (:> i32)</code></pre>
+<pre data-prefix="2"><code>  (0 0)</code></pre>
+<pre data-prefix="3"><code>  (1 1)</code></pre>
+<pre data-prefix="4"><code>  (n (+ (fibonacci (- n 1))</code></pre>
+<pre data-prefix="5"><code>        (fibonacci (- n 2)))))</code></pre>
+<pre data-prefix=""><code></code></pre>
+
 </div>
 </div>
 </div>
@@ -66,7 +65,7 @@ Read the Docs
 <span class="iconify lucide--package size-8"></span>
 </div>
 <p class="mt-5 text-2xl font-semibold lg:text-4xl">Complete</p>
-<p class="text-base-content/80 mt-1">Rich Standard Library</p>
+<p class="text-base-content/80 mt-1">The Rust Standard Library <br/>and Ecosystem</p>
 </div>
 <div>
 <div class="bg-primary/10 hover:bg-primary/15 rounded-box text-primary inline-flex items-center p-3 transition-all">
@@ -85,8 +84,8 @@ Read the Docs
 <div class="lg:col-span-2">
 <p class="text-2xl font-semibold lg:text-3xl">Why choose Oxur?</p>
 <p class="text-base-content/80 mt-4">
-Oxur combines the timeless power of Lisp with modern language design,
-giving you a practical tool for building robust, maintainable systems.
+For now, choose it for the exploration of the unknown :-D When it's finished, you can choose it for Oxur's combination of the timeless power of Lisp with modern language design,
+which will give you a practical tool for building robust, maintainable systems using a Lisp backed by Rust.
 </p>
 <div class="mt-8 space-y-3">
 <div class="flex items-center gap-3">
@@ -129,8 +128,7 @@ and create domain-specific abstractions.
 <span class="iconify lucide--wrench text-primary size-8"></span>
 <p class="mt-2 text-xl font-medium">Modern Tooling</p>
 <p class="text-base-content/80 mt-2 line-clamp-3">
-Integrated package manager, REPL, formatter, and LSP server
-for seamless development experience.
+Full integration with rustc, cargo, and crates, the Oxur compiler, a REPL, formatter, AST inspector, and IDE extensions for a seamless development experience.
 </p>
 </div>
 </div>
@@ -191,7 +189,7 @@ What can I build with Oxur?
 <div class="collapse-content">
 <p class="text-base">
 Oxur is suitable for systems programming, CLI tools, web services,
-and any application requiring high performance and expressive code.
+and any application requiring high performance and expressive code. Oxur provides 100% interop with Rust—anything you can build with Rust, you can build with Oxur!
 </p>
 </div>
 </div>

@@ -6,7 +6,7 @@
     name: "dark";
     color-scheme: dark;
     prefersdark: true;
-    --color-primary: #fc766a;
+    --color-primary: #F97316;
     --color-primary-content: #ffffff;
     --color-secondary: #494949;
     --color-secondary-content: #ffffff;
@@ -46,7 +46,7 @@
     name: "light";
     default: true;
     color-scheme: light;
-    --color-primary: #fc766a;
+    --color-primary: #F97316;
     --color-primary-content: #ffffff;
     --color-secondary: #494949;
     --color-secondary-content: #ffffff;
