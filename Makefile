@@ -94,6 +94,7 @@ css-watch:
 # Build targets
 .PHONY: build
 build: build-cobalt build-css
+	@cp $(SOURCE_DIR)/CNAME $(DEST_DIR)/CNAME
 	@echo "$(GREEN)✓ Production build complete$(RESET)"
 	@echo "$(CYAN)• Output directory: $(DEST_DIR)/$(RESET)"
 	@echo "$(CYAN)• CSS size: $$(du -h $(CSS_OUTPUT_PROD) | cut -f1)$(RESET)"
