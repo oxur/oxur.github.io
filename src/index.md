@@ -59,7 +59,7 @@ Read the Docs
 <span class="iconify lucide--code size-8"></span>
 </div>
 <p class="mt-5 text-2xl font-semibold lg:text-4xl">Expressive</p>
-<p class="text-base-content/80 mt-1">Modern Syntax</p>
+<p class="text-base-content/80 mt-1">Primordial Syntax</p>
 </div>
 <div>
 <div class="bg-primary/10 hover:bg-primary/15 rounded-box text-primary inline-flex items-center p-3 transition-all">
