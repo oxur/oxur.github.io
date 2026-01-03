@@ -58,3 +58,5 @@ We also have less formal documents that do not have their metadata tracked and d
 [![oxd cli tool screenshot of list dev command][oxd-list-dev-screenshot]][oxd-list-dev-screenshot]
 
 [oxd-list-dev-screenshot]: /assets/images/screenshots/oxd-list-dev.png
+
+</div>
