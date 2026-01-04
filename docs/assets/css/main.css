@@ -3986,6 +3986,12 @@
       --size: calc(var(--size-field, 0.25rem) * 8);
     }
   }
+  .btn-info {
+    @layer daisyui.l1.l2.l3 {
+      --btn-color: var(--color-info);
+      --btn-fg: var(--color-info-content);
+    }
+  }
   .btn-neutral {
     @layer daisyui.l1.l2.l3 {
       --btn-color: var(--color-neutral);
