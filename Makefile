@@ -342,11 +342,11 @@ show-drafts:
 	@if [ -d "$(SOURCE_DIR)/_drafts" ] && [ -n "$$(ls -A $(SOURCE_DIR)/_drafts/*.md 2>/dev/null)" ]; then \
 		MAX_LEN=0; \
 		for file in $$(ls -r $(SOURCE_DIR)/_drafts/*.md 2>/dev/null); do \
-			NAME_LEN=$$(basename "$$file" | awk '{print length}'); \
+			NAME_LEN=$$(basename "$$file" .md | awk '{print length}'); \
 			[ $$NAME_LEN -gt $$MAX_LEN ] && MAX_LEN=$$NAME_LEN; \
 		done; \
 		ls -r $(SOURCE_DIR)/_drafts/*.md 2>/dev/null | while read file; do \
-			NAME=$$(basename "$$file"); \
+			NAME=$$(basename "$$file" .md); \
 			printf "  $(CYAN)%-$${MAX_LEN}s$(RESET)  %s\n" "$$NAME" "$$file"; \
 		done; \
 	else \
@@ -359,11 +359,11 @@ show-posts:
 	@if [ -d "$(SOURCE_DIR)/posts" ] && [ -n "$$(ls -A $(SOURCE_DIR)/posts/*.md 2>/dev/null)" ]; then \
 		MAX_LEN=0; \
 		for file in $$(ls -r $(SOURCE_DIR)/posts/*.md 2>/dev/null); do \
-			NAME_LEN=$$(basename "$$file" | awk '{print length}'); \
+			NAME_LEN=$$(basename "$$file" .md | awk '{print length}'); \
 			[ $$NAME_LEN -gt $$MAX_LEN ] && MAX_LEN=$$NAME_LEN; \
 		done; \
 		ls -r $(SOURCE_DIR)/posts/*.md 2>/dev/null | while read file; do \
-			NAME=$$(basename "$$file"); \
+			NAME=$$(basename "$$file" .md); \
 			printf "  $(CYAN)%-$${MAX_LEN}s$(RESET)  %s\n" "$$NAME" "$$file"; \
 		done; \
 	else \
