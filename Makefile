@@ -25,7 +25,7 @@ DEST_DIR := build
 CSS_SOURCE := $(SOURCE_DIR)/styles/app.css
 CSS_OUTPUT_DEV := $(SOURCE_DIR)/assets/css/main.css
 CSS_OUTPUT_PROD := $(DEST_DIR)/assets/css/main.css
-LOCALHOST := $(shell hostname)
+LOCALHOST := $(shell hostname | grep -q '\.local$$' && hostname || echo "$$(hostname).local")
 LOCALPORT := 5099
 
 # Default target
