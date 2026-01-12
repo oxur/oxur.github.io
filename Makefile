@@ -66,6 +66,11 @@ help:
 	@echo "  $(YELLOW)make deploy$(RESET)           - Build and push to GitHub (triggers deployment)"
 	@echo "  $(YELLOW)make tag VERSION=x.y.z$(RESET) - Create and push git tag"
 	@echo ""
+	@echo "$(GREEN)Blog Management:$(RESET)"
+	@echo "  $(YELLOW)make draft TITLE='...'$(RESET) - Create a new draft post"
+	@echo "  $(YELLOW)make publish POST=slug$(RESET) - Move draft to published posts"
+	@echo "  $(YELLOW)make unpublish POST=slug$(RESET) - Move post back to drafts"
+	@echo ""
 	@echo "$(GREEN)Validation:$(RESET)"
 	@echo "  $(YELLOW)make check$(RESET)            - Check for required tools"
 	@echo "  $(YELLOW)make info$(RESET)             - Show build information"
@@ -246,6 +251,86 @@ tag:
 	@echo "$(YELLOW)Pushing tag to origin...$(RESET)"
 	@git push origin v$(VERSION)
 	@echo "$(GREEN)✓ Tag v$(VERSION) created and pushed$(RESET)"
+
+# Blog management targets
+.PHONY: draft
+draft:
+	@if [ -z "$(TITLE)" ]; then \
+		echo "$(RED)Error: TITLE not specified$(RESET)"; \
+		echo "$(YELLOW)Usage: make draft TITLE='My Post Title'$(RESET)"; \
+		exit 1; \
+	fi
+	@echo "$(BLUE)Creating new draft post...$(RESET)"
+	@SLUG=$$(echo "$(TITLE)" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$$//'); \
+	DATE=$$(date '+%Y-%m-%d'); \
+	FILENAME="$$DATE-$$SLUG.md"; \
+	if [ -f "$(SOURCE_DIR)/_drafts/$$FILENAME" ]; then \
+		echo "$(RED)Error: Draft already exists: $$FILENAME$(RESET)"; \
+		exit 1; \
+	fi; \
+	echo "---" > "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "title: \"$(TITLE)\"" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "description: \"\"" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "published_date: \"$$(date -u '+%Y-%m-%d %H:%M:%S +0000')\"" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "slug: $$SLUG" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "layout: post.liquid" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "tags:" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "  - rust" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "---" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "Your content here..." >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	echo "$(GREEN)✓ Created draft: $(CYAN)$$FILENAME$(RESET)"; \
+	echo "$(YELLOW)→ Edit at: $(CYAN)$(SOURCE_DIR)/_drafts/$$FILENAME$(RESET)"
+
+.PHONY: publish
+publish:
+	@if [ -z "$(POST)" ]; then \
+		echo "$(RED)Error: POST not specified$(RESET)"; \
+		echo "$(YELLOW)Usage: make publish POST=my-post-slug$(RESET)"; \
+		exit 1; \
+	fi
+	@echo "$(BLUE)Publishing draft...$(RESET)"
+	@DRAFT=$$(find $(SOURCE_DIR)/_drafts -name "*$(POST).md" 2>/dev/null | head -1); \
+	if [ -z "$$DRAFT" ]; then \
+		echo "$(RED)Error: Draft not found matching '$(POST)'$(RESET)"; \
+		echo "$(YELLOW)Available drafts:$(RESET)"; \
+		ls -1 $(SOURCE_DIR)/_drafts/*.md 2>/dev/null | xargs -n1 basename | sed 's/^/  /' || echo "  (none)"; \
+		exit 1; \
+	fi; \
+	FILENAME=$$(basename "$$DRAFT"); \
+	if [ -f "$(SOURCE_DIR)/posts/$$FILENAME" ]; then \
+		echo "$(RED)Error: Post already exists: $$FILENAME$(RESET)"; \
+		exit 1; \
+	fi; \
+	echo "$(CYAN)• Moving $$FILENAME to posts/$(RESET)"; \
+	git mv "$$DRAFT" "$(SOURCE_DIR)/posts/$$FILENAME" && \
+	echo "$(GREEN)✓ Published: $(CYAN)$$FILENAME$(RESET)" && \
+	echo "$(YELLOW)→ Don't forget to commit the change$(RESET)"
+
+.PHONY: unpublish
+unpublish:
+	@if [ -z "$(POST)" ]; then \
+		echo "$(RED)Error: POST not specified$(RESET)"; \
+		echo "$(YELLOW)Usage: make unpublish POST=my-post-slug$(RESET)"; \
+		exit 1; \
+	fi
+	@echo "$(BLUE)Moving post to drafts...$(RESET)"
+	@POST_FILE=$$(find $(SOURCE_DIR)/posts -name "*$(POST).md" 2>/dev/null | head -1); \
+	if [ -z "$$POST_FILE" ]; then \
+		echo "$(RED)Error: Post not found matching '$(POST)'$(RESET)"; \
+		echo "$(YELLOW)Available posts:$(RESET)"; \
+		ls -1 $(SOURCE_DIR)/posts/*.md 2>/dev/null | xargs -n1 basename | sed 's/^/  /' || echo "  (none)"; \
+		exit 1; \
+	fi; \
+	FILENAME=$$(basename "$$POST_FILE"); \
+	if [ -f "$(SOURCE_DIR)/_drafts/$$FILENAME" ]; then \
+		echo "$(RED)Error: Draft already exists: $$FILENAME$(RESET)"; \
+		exit 1; \
+	fi; \
+	echo "$(CYAN)• Moving $$FILENAME to _drafts/$(RESET)"; \
+	git mv "$$POST_FILE" "$(SOURCE_DIR)/_drafts/$$FILENAME" && \
+	echo "$(GREEN)✓ Moved to drafts: $(CYAN)$$FILENAME$(RESET)" && \
+	echo "$(YELLOW)→ Don't forget to commit the change$(RESET)"
 
 # Validation targets
 .PHONY: check

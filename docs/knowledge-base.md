@@ -21,21 +21,27 @@ This document captures important gotchas, workflows, and lessons learned while d
 When cloning the project to a new machine, follow these steps:
 
 1. **Install dependencies:**
+
    ```bash
    make install
    ```
+
    This installs all npm dependencies needed for CSS compilation.
 
 2. **Set up git worktree:**
+
    ```bash
    make setup
    ```
+
    This creates a git worktree at `build/` that tracks the `pages` branch. The worktree is essential for deployment.
 
 3. **Verify installation:**
+
    ```bash
    make check
    ```
+
    Confirms that cobalt, npm, node, and git are all installed and accessible.
 
 ### Required Tools
@@ -55,6 +61,7 @@ make serve
 ```
 
 This command:
+
 - Cleans previous builds
 - Compiles CSS to `src/assets/css/main.css` (dev location)
 - Updates build info in `_cobalt.yml`
@@ -89,11 +96,13 @@ Runs both CSS watch and cobalt serve in parallel.
 **The most important gotcha:**
 
 When you run `cobalt serve`, Cobalt does **NOT** serve files from the `build/` directory. Instead, it:
+
 1. Reads source files from `src/`
 2. Builds to a **temporary directory**
 3. Serves from that temp directory
 
 **Implications:**
+
 - CSS must be in `src/assets/css/main.css` for dev mode
 - Changes to `build/` won't appear in the dev server
 - Only `cobalt build` outputs to `build/`
@@ -114,6 +123,7 @@ When you run `cobalt serve`, Cobalt does **NOT** serve files from the `build/` d
 **Problem:** Extra indentation in Liquid templates gets rendered as whitespace in the HTML output, causing visual formatting issues.
 
 **Example of problematic code:**
+
 ```liquid
 <div class="card">
   {% for post in collections.posts.pages %}
@@ -137,6 +147,7 @@ When you run `cobalt serve`, Cobalt does **NOT** serve files from the `build/` d
 **Problem:** When passing HTML through Liquid variables (like in frontmatter), the HTML gets escaped.
 
 **Example:**
+
 ```yaml
 ---
 description: "Line one<br/>Line two"
@@ -198,56 +209,58 @@ src/
 
 ### Creating a New Post
 
-1. Create a new markdown file in `src/_drafts/`:
+Use the `make draft` target to create a new draft post:
 
 ```bash
-touch src/_drafts/YYYY-MM-DD-my-post-title.md
+make draft TITLE="My Post Title"
 ```
 
-2. Add frontmatter:
+This will:
+- Generate a slug from the title (e.g., "My Post Title" → "my-post-title")
+- Create a file with today's date: `YYYY-MM-DD-my-post-title.md`
+- Add proper frontmatter (title, description, published_date, slug, layout, tags)
+- Place it in `src/_drafts/`
 
-```markdown
----
-title: "My Post Title"
-description: "A brief description"
-published_date: "YYYY-MM-DD HH:MM:SS +0000"
-slug: my-post-title
-layout: post.liquid
-tags:
-  - rust
-  - lisp
----
-
-Your content here...
-```
-
-3. View drafts with:
+You can then edit the file and view it with:
 
 ```bash
 make serve  # Includes --drafts flag
 ```
 
-### Moving a Post to Draft
-
-To unpublish a post:
-
-```bash
-git mv src/posts/YYYY-MM-DD-title.md src/_drafts/
-```
-
 ### Publishing a Draft
 
-To publish a draft:
+Use the `make publish` target to move a draft to published posts:
 
 ```bash
-git mv src/_drafts/YYYY-MM-DD-title.md src/posts/
+make publish POST=my-post-title
 ```
+
+This will:
+- Find the draft matching the slug
+- Move it from `src/_drafts/` to `src/posts/` using `git mv`
+- Remind you to commit the change
+
+**Note:** The POST parameter is the slug (not the full filename).
+
+### Moving a Post Back to Drafts
+
+Use the `make unpublish` target to unpublish a post:
+
+```bash
+make unpublish POST=my-post-title
+```
+
+This will:
+- Find the post matching the slug
+- Move it from `src/posts/` to `src/_drafts/` using `git mv`
+- Remind you to commit the change
 
 ### Filename Convention
 
 Blog post filenames **must** include the date: `YYYY-MM-DD-slug.md`
 
 This is required because `_cobalt.yml` sets:
+
 ```yaml
 posts:
   publish_date_in_filename: true
@@ -264,6 +277,7 @@ make build
 ```
 
 This:
+
 1. Runs `make build-cobalt` (builds site to `build/`)
 2. Runs `make build-css` (compiles CSS to `build/assets/css/main.css`)
 3. Copies `src/CNAME` to `build/CNAME`
@@ -276,6 +290,7 @@ make deploy
 ```
 
 This:
+
 1. Runs `make build`
 2. Commits changes in the `build/` worktree (pages branch)
 3. Pushes `pages` branch to both Codeberg and GitHub
@@ -289,6 +304,7 @@ The project uses **two git branches**:
 - **pages branch:** Built site (HTML, CSS, deployed to Pages)
 
 The `build/` directory is a **git worktree** tracking the `pages` branch. This allows:
+
 - Separate commit history for built artifacts
 - Atomic deployments
 - Clean separation of source and output
@@ -357,6 +373,7 @@ This ensures `make serve` works consistently across different machines.
 **Cause:** Missing `src/assets/css/main.css` (it's gitignored).
 
 **Solution:**
+
 ```bash
 make build-css-dev
 make serve
@@ -379,6 +396,7 @@ make serve
 **Symptom:** `make setup` fails with "worktree already exists" or similar.
 
 **Solution:**
+
 ```bash
 # Remove existing worktree
 git worktree remove build
@@ -403,16 +421,22 @@ make serve        # Start dev server with drafts
 ### Creating & Publishing Posts
 
 ```bash
-# Create draft
-vim src/_drafts/2026-01-13-new-post.md
+# Create new draft
+make draft TITLE="My New Post"
+
+# Edit the draft
+vim src/_drafts/2026-01-12-my-new-post.md
 
 # Test with dev server
 make serve
 
 # Publish when ready
-git mv src/_drafts/2026-01-13-new-post.md src/posts/
-git add src/posts/2026-01-13-new-post.md
-git commit -m "Published: New Post"
+make publish POST=my-new-post
+git commit -m "Published: My New Post"
+
+# Or unpublish if needed
+make unpublish POST=my-new-post
+git commit -m "Unpublished: My New Post"
 ```
 
 ### Deployment
