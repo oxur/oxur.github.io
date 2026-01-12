@@ -18,9 +18,18 @@ ignore:
   - "assets/clj-highlight/**"
   - "assets/highlight-collection/**"
 
-# Permalinks
+# Posts configuration
 posts:
+  title: "Blog"
+  description: "Insights on Oxur, Treebeard, Rust, ASTs, and Lisps"
   dir: posts
+  drafts_dir: _drafts
+  order: Desc
+  rss: blog.rss
+  publish_date_in_filename: true
+  default:
+    layout: post.liquid
+    excerpt_separator: "\n\n"
 
 # Assets to copy
 assets:

@@ -1,0 +1,46 @@
+{% if paginator.total_indexes > 1 %}
+<nav class="flex justify-center mt-12" aria-label="Pagination">
+  <div class="join">
+    <!-- First Page -->
+    {% if paginator.previous_index %}
+    <a href="/{{ paginator.first_index_permalink }}" class="join-item btn" aria-label="First page">
+      <span class="iconify lucide--chevrons-left size-4"></span>
+    </a>
+    {% endif %}
+
+    <!-- Previous Page -->
+    {% if paginator.previous_index %}
+    <a href="/{{ paginator.previous_index_permalink }}" class="join-item btn" aria-label="Previous page">
+      <span class="iconify lucide--chevron-left size-4"></span>
+    </a>
+    {% else %}
+    <button class="join-item btn btn-disabled" aria-disabled="true">
+      <span class="iconify lucide--chevron-left size-4"></span>
+    </button>
+    {% endif %}
+
+    <!-- Current Page Indicator -->
+    <button class="join-item btn btn-active">
+      Page {{ paginator.index }} of {{ paginator.total_indexes }}
+    </button>
+
+    <!-- Next Page -->
+    {% if paginator.next_index %}
+    <a href="/{{ paginator.next_index_permalink }}" class="join-item btn" aria-label="Next page">
+      <span class="iconify lucide--chevron-right size-4"></span>
+    </a>
+    {% else %}
+    <button class="join-item btn btn-disabled" aria-disabled="true">
+      <span class="iconify lucide--chevron-right size-4"></span>
+    </button>
+    {% endif %}
+
+    <!-- Last Page -->
+    {% if paginator.next_index %}
+    <a href="/{{ paginator.last_index_permalink }}" class="join-item btn" aria-label="Last page">
+      <span class="iconify lucide--chevrons-right size-4"></span>
+    </a>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}

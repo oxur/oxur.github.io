@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="group/html">
+<head>
+{% include "head.liquid" %}
+</head>
+<body>
+{% include "topbar.liquid" %}
+
+<main class="container mx-auto px-4 py-8 max-w-6xl">
+  <!-- Hero Section -->
+  <div class="hero bg-base-200 rounded-box mb-12 py-12">
+    <div class="hero-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-5xl font-bold text-brand-gradient">{{ page.title | default: "Blog" }}</h1>
+        <p class="py-6 text-lg text-base-content/70">
+          {{ page.description | default: "Insights on Oxur, Treebeard, Rust, ASTs, and Lisps" }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {{ page.content }}
+</main>
+
+{% include "footer.liquid" %}
+{% include "theme-toggle.liquid" %}
+
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

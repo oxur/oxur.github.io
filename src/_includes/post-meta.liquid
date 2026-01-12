@@ -1,0 +1,25 @@
+<div class="flex flex-wrap items-center gap-4 text-base-content/60 text-sm">
+  <!-- Date -->
+  <div class="flex items-center gap-1">
+    <span class="iconify lucide--calendar size-4"></span>
+    <time datetime="{{ page.published_date | date: '%Y-%m-%d' }}">
+      {{ page.published_date | date: "%B %d, %Y" }}
+    </time>
+  </div>
+
+  <!-- Read Time (if available in frontmatter) -->
+  {% if page.data.read_time %}
+  <div class="flex items-center gap-1">
+    <span class="iconify lucide--clock size-4"></span>
+    <span>{{ page.data.read_time }} min read</span>
+  </div>
+  {% endif %}
+
+  <!-- Category (if available) -->
+  {% if page.categories.size > 0 %}
+  <div class="flex items-center gap-1">
+    <span class="iconify lucide--tag size-4"></span>
+    <span>{{ page.categories | join: " / " }}</span>
+  </div>
+  {% endif %}
+</div>

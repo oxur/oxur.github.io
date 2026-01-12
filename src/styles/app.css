@@ -66,3 +66,40 @@ pre code.hljs {
         }
     }
 }
+
+/* Blog-specific styles */
+
+/* Ensure prose content works well with DaisyUI themes */
+.blog-content {
+    @apply prose prose-lg max-w-none;
+}
+
+/* Style code blocks */
+.blog-content pre {
+    @apply rounded-box;
+}
+
+/* Style inline code */
+.blog-content code:not(pre code) {
+    @apply bg-base-200 px-1.5 py-0.5 rounded text-sm;
+}
+
+/* Post card hover effects */
+.card:hover {
+    @apply transform scale-[1.02] transition-transform duration-200;
+}
+
+/* Smooth transitions for theme switching */
+article, .card, .hero {
+    @apply transition-colors duration-200;
+}
+
+/* Better image handling in posts */
+.blog-content img {
+    @apply rounded-box shadow-md;
+}
+
+/* Block quotes styling */
+.blog-content blockquote {
+    @apply border-l-4 border-primary bg-base-200/50 rounded-r-box;
+}

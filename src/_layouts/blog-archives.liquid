@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="group/html">
+<head>
+{% include "head.liquid" %}
+</head>
+<body>
+{% include "topbar.liquid" %}
+
+<main class="container mx-auto px-4 py-8 max-w-6xl">
+  <div class="mb-8">
+    <div class="breadcrumbs text-sm">
+      <ul>
+        <li><a href="/" class="link link-hover">Home</a></li>
+        <li><a href="/blog/" class="link link-hover">Blog</a></li>
+        <li>Archives</li>
+      </ul>
+    </div>
+    <h1 class="text-4xl font-bold mt-4 text-brand-gradient">Blog Archives</h1>
+    <p class="text-base-content/70 mt-2">All posts, organized by date</p>
+  </div>
+
+  <!-- Posts List -->
+  <div class="space-y-6">
+    {% for post in collections.posts.pages %}
+      {% assign include_post = post %}
+      {% assign include_style = "horizontal" %}
+      {% assign include_show_excerpt = true %}
+      {% include "post-card.liquid" %}
+    {% endfor %}
+  </div>
+</main>
+
+{% include "footer.liquid" %}
+{% include "theme-toggle.liquid" %}
+
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
