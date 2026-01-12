@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" class="group/html">
+<head>
+<meta charset="utf-8" />
+<title>Download | The Oxur Language</title>
+<meta content="A modern Lisp, a Rust dialect" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Theme favicon -->
+<link rel="shortcut icon" href="/assets/images/favicon.ico" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="/assets/css/main.css" />
+<link rel="stylesheet" href="/assets/css/atom-one-dark.min.css" />
+<link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/assets/icons/site.webmanifest">
+
+</head>
+<body>
+<div
+    id="layout-topbar"
+    class="data-[at-top=false]:bg-base-100/95 border-base-300 fixed inset-x-0 top-0 z-50 container bg-transparent backdrop-blur-sm transition-all data-[at-top=false]:max-sm:border-b sm:rounded-full data-[at-top=false]:sm:top-4 data-[at-top=false]:sm:px-8 data-[at-top=false]:sm:shadow">
+    <div>
+        <nav class="flex items-center justify-between py-2">
+            <div class="flex items-center gap-2">
+                <label
+                    for="menu-drawer"
+                    id="menu-drawer-trigger"
+                    aria-label="open sidebar"
+                    class="btn btn-square btn-ghost btn-sm lg:hidden">
+                    <span class="iconify lucide--menu size-5"></span>
+                </label>
+
+                <!-- Navbar Brand logo -->
+                <a href="/" class="text-brand-gradient text-2xl font-semibold tracking-tighter">
+                    Oxur
+                </a>
+            </div>
+
+            <div class="max-lg:hidden">
+                <ul class="menu menu-horizontal gap-2 px-1">
+                    <li class="font-medium"><a href="/#home">Home</a></li>
+                    <li class="font-medium"><a href="/#features">Features</a></li>
+                    <li class="font-medium"><a href="/docs">Docs</a></li>
+                    <li class="font-medium"><a href="https://github.com/oxur/oxur/releases">Download</a></li>
+                    <li class="font-medium">
+                        <a
+                            href="https://codeberg.org/oxur/oxur"
+                            target="_blank"
+                            class="btn btn-info btn-sm">
+                            Codeberg
+                        </a>
+                    </li>
+                    <li class="font-medium">
+                        <a
+                            href="https://github.com/oxur/oxur"
+                            target="_blank"
+                            class="btn btn-primary btn-sm">
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- sm screen menu (drawer) -->
+        <div class="drawer">
+            <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-side">
+                <label for="menu-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+                <div class="bg-base-100 min-h-full w-60 p-5">
+                    <a href="/" class="text-brand-gradient text-2xl font-bold tracking-tighter">
+                        Oxur
+                    </a>
+                    <ul class="menu w-full gap-2 p-0 pt-4">
+                        <li class="font-medium"><a href="/#home">Home</a></li>
+                        <li class="font-medium"><a href="/#features">Features</a></li>
+                        <li class="font-medium"><a href="/docs">Docs</a></li>
+                        <li class="font-medium"><a href="https://github.com/oxur/oxur/releases">Download</a></li>
+                        <li class="font-medium">
+                            <a
+                                href="https://codeberg.org/oxur/oxur"
+                                target="_blank"
+                                class="btn btn-info btn-sm">
+                                Codeberg
+                            </a>
+                        </li>
+                        <li class="font-medium">
+                            <a
+                                href="https://github.com/oxur/oxur"
+                                target="_blank"
+                                class="btn btn-primary btn-sm">
+                                GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<main class="container py-8 lg:py-16">
+<h1>Download Oxur</h1>
+<p>Download instructions coming soon!</p>
+
+</main>
+
+<footer class="bg-base-200/30 border-base-200 m-5 rounded-xl border">
+    <div class="p-6 sm:container sm:py-12">
+        <p class="text-2xl font-medium">Oxur Lisp</p>
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-6">
+            <div class="inline-flex gap-3">
+                <a href="https://github.com/oxur/oxur" target="_blank"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify lucide--github size-5"></span>
+                </a>
+                <a href="https://fosstodon.org/@oxur" target="_blank"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify simple-icons--mastodon size-5"></span>
+                </a>
+                <a href="https://discord.gg/mndyrJD4" target="_blank"
+                    class="border-base-300 hover:bg-primary hover:text-primary-content hover:border-primary flex cursor-pointer items-center rounded border p-2 transition-all">
+                    <span class="iconify simple-icons--discord size-5"></span>
+                </a>
+            </div>
+            <div class="join inline-flex">
+              <!--
+                <input
+                    aria-label="Subscribe to updates"
+                    autocomplete="email"
+                    id="email"
+                    class="input join-item input-bordered w-full lg:max-w-xs"
+                    placeholder="email@example.com"
+                    type="email"
+                    required />
+                <button class="btn join-item btn-neutral">Subscribe</button>
+              /-->
+            </div>
+        </div>
+        <div class="mt-8 grid gap-6 sm:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div>
+                <h2 class="text-lg font-medium">Language</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="/#features">Overview</a>
+                    <a href="/docs/syntax/">Syntax</a>
+                    <a href="/docs/stdlib/">Standard Library</a>
+                    <a href="/docs/examples/">Examples</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">Resources</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="/docs">Documentation</a>
+                    <a href="https://github.com/oxur/oxur/releases">Download</a>
+                    <a href="/docs/tutorial/">Tutorial</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">Community</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="https://github.com/oxur/oxur">GitHub</a>
+                    <a href="https://discord.gg/mndyrJD4">Discord</a>
+                    <a href="https://github.com/oxur/oxur/issues">Issues</a>
+                    <a href="/policies/code-of-conduct/">Code of Conduct</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-medium">About</h2>
+                <div
+                    class="**:hover:text-primary mt-5 space-y-2 **:block **:text-base **:transition-all **:duration-500">
+                    <a href="https://github.com/oxur/oxur/blob/main/crates/design/docs/05-active/0001-oxur-letter-of-intent.md">About Oxur</a>
+                    <a href="https://github.com/oxur/oxur/blob/main/LICENSE">License</a>
+                    <a href="https://github.com/oxur/oxur/releases">Changelog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="subfooter">
+    Built with <a class="link-hover link" href="https://cobalt-org.github.io/" target="_blank">Cobalt</a>,
+    <a class="link-hover link" href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>,
+    and <a class="link-hover link" href="https://daisyui.com" target="_blank">daisyUI</a>
+    ・
+    ad07463
+    ・
+    2026-01-12T16:47:30Z
+</div>
+
+<!-- Theme Toggle -->
+<div class="fixed end-5 bottom-5 z-10 flex flex-col items-center">
+    <div class="dropdown dropdown-end dropdown-top">
+        <div class="btn btn-outline bg-base-100 border-base-300 mt-2" role="button" tabindex="0">
+            Theme
+            <span class="iconify lucide--chevron-up size-3.5"></span>
+        </div>
+        <ul class="menu dropdown-content rounded-box bg-base-100 w-52 shadow" tabindex="0">
+            <li>
+                <div
+                    data-theme-control="system"
+                    class="group-[:not([data-theme])]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--laptop size-4.5"></span>
+                    System
+                </div>
+            </li>
+            <li>
+                <div
+                    data-theme-control="light"
+                    class="group-data-[theme=light]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--sun size-4.5"></span>
+                    Light
+                </div>
+            </li>
+            <li>
+                <div
+                    data-theme-control="dark"
+                    class="group-data-[theme=dark]/html:bg-base-200 flex items-center">
+                    <span class="iconify lucide--moon size-4.5"></span>
+                    Dark
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<script src="/assets/js/highlight-all.min.js"></script>
+<script>
+// Add Oxur-specific keywords to Clojure highlighting
+if (hljs && hljs.getLanguage('clojure')) {
+  const clojureDef = hljs.getLanguage('clojure');
+
+  hljs.registerLanguage('oxur', function(hljs) {
+    // Create a pattern to match Oxur definition forms
+    const oxurDefPattern = {
+      begin: '\\(\\s*(deffn|defimpl)\\b',
+      end: '(\\[|\\{|\\()',
+      excludeEnd: true,
+      keywords: {
+        keyword: 'deffn defimpl'
+      },
+      contains: [
+        {
+          className: 'title',
+          begin: '[a-zA-Z_\\-!.?+*=<>&#\'][a-zA-Z_\\-!.?+*=<>&#\'0-9/]*',
+          relevance: 0
+        }
+      ]
+    };
+
+    // Combine with Clojure contains at the front (higher priority)
+    const contains = [oxurDefPattern].concat(clojureDef.contains || []);
+
+    return {
+      name: 'Oxur',
+      aliases: ['lisp'],
+      contains: contains
+    };
+  });
+}
+hljs.highlightAll();
+</script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
