@@ -11,9 +11,13 @@ RESET := \033[0m
 # Variables
 SITE_NAME := Oxur Lisp
 SITE_URL := https://oxur.li
+BACKUP_SITE_URL := https://oxur.codeberg.page/
+FUN_SITE_URL := https://oxur.ελ
 BUILD_TIME := $(shell date -u '+%Y-%m-%dT%H:%M:%SZ')
 GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+PUBLISH_BRANCH := pages
+CODE_BRANCH := $(GIT_BRANCH)
 NPM := npm
 COBALT := cobalt
 SOURCE_DIR := src
@@ -190,26 +194,30 @@ commit:
 push:
 	@echo "$(BLUE)Pushing changes ...$(RESET)"
 	@echo "$(CYAN)• Codeberg:$(RESET)"
-	@git push codeberg main && git push codeberg --tags
+	@git push codeberg $(CODE_BRANCH) && git push codeberg --tags
 	@echo "$(GREEN)✓ Pushed$(RESET)"
 	@echo "$(CYAN)• Github:$(RESET)"
-	@git push github main && git push github --tags
+	@git push github $(CODE_BRANCH) && git push github --tags
 	@echo "$(GREEN)✓ Pushed$(RESET)"
 
 .PHONY: deploy
 deploy: build
 	@echo "$(BLUE)Deploying site...$(RESET)"
+	@echo "$(CYAN)Updating git worktree $(DEST_DIR) dir for $(PUBLISH_BRANCH) branch ...$(RESET)"
 	@cd $(DEST_DIR) && \
 	git add -A && \
 	(git commit -m "Site rebuild - $(BUILD_TIME)" || echo "$(YELLOW)No changes to commit$(RESET)")
+	@echo "$(CYAN)Updating site build changes for $(CODE_BRANCH) branch ...$(RESET)"
 	@echo "$(CYAN)• Codeberg:$(RESET)"
-	@git push codeberg pages
+	@git push codeberg $(PUBLISH_BRANCH)
 	@echo "$(GREEN)✓ Published$(RESET)"
 	@echo "$(CYAN)• Github:$(RESET)"
-	@git push github pages
+	@git push github $(PUBLISH_BRANCH)
 	@echo "$(GREEN)✓ Published$(RESET)"
 	@echo "$(GREEN)✓ Deployment complete$(RESET)"
-	@echo "$(CYAN)→ Site should now be live at $(SITE_URL)$(RESET)"
+	@echo "$(CYAN)→ Site should now be live at$(RESET) $(BLUE)$(FUN_SITE_URL)$(RESET) $(CYAN)and$(RESET):"
+	@echo "$(CYAN)• Codeberg: $(RESET)$(BLUE)$(BACKUP_SITE_URL)$(RESET)"
+	@echo "$(CYAN)• Github: $(RESET)$(BLUE)$(SITE_URL)$(RESET)"
 
 .PHONY: tag
 tag:
