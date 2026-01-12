@@ -84,9 +84,9 @@ serve: clean build-css-dev
 	@echo "$(BLUE)Updating build info...$(RESET)"
 	@sed -i '' "s/    commit_id: \".*\"/    commit_id: \"$(GIT_COMMIT)\"/" _cobalt.yml
 	@sed -i '' "s/    build_time: \".*\"/    build_time: \"$(BUILD_TIME)\"/" _cobalt.yml
-	@echo "$(BLUE)Starting Cobalt server...$(RESET)"
+	@echo "$(BLUE)Starting Cobalt server (with drafts)...$(RESET)"
 	@echo "$(GREEN)→ Serving from $(SOURCE_DIR)/ at http://localhost:1024$(RESET)"
-	@$(COBALT) serve
+	@$(COBALT) serve --drafts
 
 .PHONY: css-watch
 css-watch:
