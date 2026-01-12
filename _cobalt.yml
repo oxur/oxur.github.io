@@ -3,8 +3,8 @@ site:
   description: "A modern Lisp, a Rust dialect"
   base_url: "https://oxur.li"
   data:
-    commit_id: "f45c67c"
-    build_time: "2026-01-12T18:16:21Z"
+    commit_id: "2c8f1d3"
+    build_time: "2026-01-12T21:20:59Z"
 
 # Build settings
 source: src
