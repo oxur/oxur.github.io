@@ -9,57 +9,125 @@
 {% assign post = include_post %}
 {% assign card_style = include_style | default: "card" %}
 {% assign show_excerpt = include_show_excerpt | default: true %}
-{% if card_style == "horizontal" %}
+{% if card_style == "featured-large" %}
+<!-- Featured Large Card Style (Full Width) -->
+<article class="card lg:card-side blog-card border border-base-content/20 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden group lg:min-h-96">
+<a href="/{{ post.permalink }}" class="lg:w-1/2 relative">
+{% if post.data.image %}
+<figure class="h-full overflow-hidden">
+<img src="{{ post.data.image }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+</figure>
+{% else %}
+<figure class="bg-gradient-to-br from-primary/30 to-secondary/30 h-80 lg:h-full flex items-center justify-center">
+<span class="iconify lucide--star size-24 text-primary/50"></span>
+</figure>
+{% endif %}
+<div class="badge badge-primary absolute top-4 left-4 z-10">Featured</div>
+</a>
+<div class="card-body lg:w-1/2 p-8">
+<div class="flex items-center gap-3 text-sm text-base-content/60 mb-3">
+<time class="flex items-center gap-1" datetime="{{ post.published_date | date: '%Y-%m-%d' }}">
+{{ post.published_date | date: "%B %d, %Y" }}
+<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
+</time>
+{% if post.data.read_time %}
+<span class="flex items-center gap-1">
+<span class="iconify lucide--clock size-4"></span>
+{{ post.data.read_time }} min read
+</span>
+{% endif %}
+</div>
+<a href="/{{ post.permalink }}">
+<h2 class="card-title text-3xl hover:text-primary transition-colors leading-tight mb-4">{{ post.title }}</h2>
+</a>
+{% if show_excerpt and post.excerpt %}
+<p class="text-base-content/70 text-base leading-relaxed mb-6">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+{% endif %}
+<div class="flex items-center justify-between mt-auto">
+<div class="flex gap-2 flex-wrap">
+{% for tag in post.tags limit: 4 %}<span class="badge badge-outline">{{ tag }}</span>{% endfor %}
+</div>
+<a href="/{{ post.permalink }}" class="btn btn-primary btn-sm">
+Read article
+<span class="iconify lucide--arrow-right size-4"></span>
+</a>
+</div>
+</div>
+</article>
+{% elsif card_style == "horizontal" %}
 <!-- Horizontal Card Style -->
-<article class="card card-side bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+<article class="card card-side blog-card border border-base-content/20 shadow-md hover:shadow-lg transition-shadow rounded-2xl">
 {% if post.data.image %}
 <figure class="w-48 shrink-0">
 <img src="{{ post.data.image }}" alt="{{ post.title }}" class="h-full object-cover" />
 </figure>
 {% endif %}
 <div class="card-body">
-<h2 class="card-title">
-<a href="/{{ post.permalink }}" class="link link-hover">{{ post.title }}</a>
-</h2>
-<div class="text-sm text-base-content/60 flex flex-wrap items-center gap-2">
-<time datetime="{{ post.published_date | date: '%Y-%m-%d' }}">
+<div class="flex items-center gap-3 text-sm text-base-content/60 mb-3">
+<time class="flex items-center gap-1" datetime="{{ post.published_date | date: '%Y-%m-%d' }}">
 {{ post.published_date | date: "%B %d, %Y" }}
+<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
 </time>
 {% if post.data.read_time %}
-<span class="badge badge-ghost badge-sm">{{ post.data.read_time }} min read</span>
+<span class="flex items-center gap-1">
+<span class="iconify lucide--clock size-4"></span>
+{{ post.data.read_time }} min read
+</span>
 {% endif %}
 </div>
+<h2 class="card-title text-xl hover:text-primary transition-colors">
+<a href="/{{ post.permalink }}" class="link-hover">{{ post.title }}</a>
+</h2>
 {% if show_excerpt and post.excerpt %}
-<p class="text-base-content/70 mt-2">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+<p class="text-base-content/70 mt-2 line-clamp-3">{{ post.excerpt | strip_html | truncate: 150 }}</p>
 {% endif %}
-<div class="card-actions justify-end mt-4">
+<div class="card-actions justify-start mt-4">
 {% for tag in post.tags limit: 3 %}<span class="badge badge-outline badge-sm">{{ tag }}</span>{% endfor %}
 </div>
 </div>
 </article>
 {% else %}
 <!-- Vertical Card Style (default) -->
-<article class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+<article class="card blog-card border border-base-content/20 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group rounded-2xl">
+<a href="/{{ post.permalink }}" class="relative">
 {% if post.data.image %}
-<figure>
-<img src="{{ post.data.image }}" alt="{{ post.title }}" class="w-full h-48 object-cover" />
+<figure class="overflow-hidden">
+<img src="{{ post.data.image }}" alt="{{ post.title }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+</figure>
+{% else %}
+<figure class="bg-gradient-to-br from-primary/20 to-secondary/20 h-40 flex items-center justify-center">
+<span class="iconify lucide--file-text size-16 text-primary/40"></span>
 </figure>
 {% endif %}
-<div class="card-body">
-<h2 class="card-title">
-<a href="/{{ post.permalink }}" class="link link-hover">{{ post.title }}</a>{% if post.data.featured %} <span class="badge badge-secondary">Featured</span>{% endif %}
-</h2>
-<div class="text-sm text-base-content/60">
-<time datetime="{{ post.published_date | date: '%Y-%m-%d' }}">
-{{ post.published_date | date: "%B %d, %Y" }}
-</time>
-</div>
-{% if show_excerpt and post.excerpt %}
-<p class="text-base-content/70">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+{% if post.tags.size > 0 %}
+<div class="badge badge-ghost absolute top-3 right-3 z-10">{{ post.tags[0] }}</div>
 {% endif %}
-<div class="card-actions justify-end mt-2">
-{% for tag in post.tags limit: 2 %}<span class="badge badge-outline badge-sm">{{ tag }}</span>{% endfor %}
+</a>
+<div class="card-body p-5">
+<div class="flex items-center gap-2 text-sm text-base-content/60 mb-2">
+<time class="flex items-center gap-1" datetime="{{ post.published_date | date: '%Y-%m-%d' }}">
+{{ post.published_date | date: "%B %d, %Y" }}
+<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
+</time>
+{% if post.data.read_time %}
+<span class="flex items-center gap-1">
+<span class="iconify lucide--clock size-4"></span>
+{{ post.data.read_time }} min read
+</span>
+{% endif %}
 </div>
+<a href="/{{ post.permalink }}">
+<h2 class="card-title text-xl hover:text-primary transition-colors leading-tight">{{ post.title }}</h2>
+</a>
+{% if show_excerpt and post.excerpt %}
+<p class="text-base-content/70 text-sm line-clamp-3 mt-2">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+{% endif %}
+<a href="/{{ post.permalink }}" class="flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all mt-4">
+Read article
+<svg viewBox="0 0 16 16" fill="none" class="w-4 h-4" stroke="currentColor">
+<path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
 </div>
 </article>
 {% endif %}
