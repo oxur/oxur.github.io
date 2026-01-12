@@ -6,13 +6,13 @@
 <body>
 {% include "topbar.liquid" %}
 
-<main class="container mx-auto px-4 py-8 max-w-6xl">
+<main class="container mx-auto px-4 pt-24 pb-8 max-w-6xl">
   <!-- Hero Section -->
   <div class="hero bg-base-200 rounded-xl mb-12 py-12">
     <div class="hero-content text-center">
       <div class="max-w-2xl">
-        <h1 class="text-5xl font-bold text-brand-gradient">{{ page.title | default: "Blog" }}</h1>
-        <p class="py-6 text-lg text-base-content/70">
+        <h1 class="text-5xl font-bold text-brand-gradient leading-tight">{{ page.title | default: "Oxur Notes" }}</h1>
+        <p class="py-6 text-lg text-base-content/70 leading-relaxed">
           {{ page.description | default: "Insights on Oxur, Treebeard, Rust, ASTs, and Lisps" }}
         </p>
       </div>

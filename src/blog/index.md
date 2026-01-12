@@ -1,5 +1,5 @@
 ---
-title: Blog
+title: Oxur Notes
 description: Insights on Oxur, Treebeard, Rust, ASTs, and Lisps
 layout: blog.liquid
 ---
@@ -62,6 +62,14 @@ Featured Posts
     {% endfor %}
   </div>
 </section>
+
+<!-- More Button -->
+<div class="flex justify-end mb-16">
+<a href="/blog/archives/" class="btn btn-primary">
+More
+<span class="iconify lucide--arrow-right size-4 ml-1"></span>
+</a>
+</div>
 
 <!-- Categories/Tags Cloud -->
 <section class="mb-16">

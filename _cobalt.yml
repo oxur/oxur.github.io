@@ -4,12 +4,17 @@ site:
   base_url: "https://oxur.li"
   data:
 <<<<<<< HEAD
+<<<<<<< HEAD
     commit_id: "fb4d05f"
     build_time: "2026-01-12T17:29:20Z"
 =======
     commit_id: "022c497"
     build_time: "2026-01-12T05:08:08Z"
 >>>>>>> 5533ea4 (Polish blog styling and layout)
+=======
+    commit_id: "5533ea4"
+    build_time: "2026-01-12T05:36:54Z"
+>>>>>>> e03b125 (Polish blog UI and improve navigation)
 
 # Build settings
 source: src

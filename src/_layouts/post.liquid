@@ -6,53 +6,59 @@
 <body>
 {% include "topbar.liquid" %}
 
-<article class="prose prose-lg lg:prose-xl mx-auto px-4 py-8 max-w-4xl">
-  <!-- Post Header -->
-  <header class="mb-8 not-prose">
-    <div class="breadcrumbs text-sm mb-4">
-      <ul>
-        <li><a href="/" class="link link-hover">Home</a></li>
-        <li><a href="/blog/" class="link link-hover">Blog</a></li>
-        <li>{{ page.title }}</li>
-      </ul>
-    </div>
+<article class="container mx-auto px-4 pt-24 pb-12 max-w-4xl flex flex-col gap-8">
+<!-- Post Header -->
+<header class="space-y-4">
+{% if page.tags.size > 0 %}
+<div class="badge badge-outline badge-lg italic text-primary">{{ page.tags[0] }}</div>
+{% endif %}
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">{{ page.title }}</h1>
+{% if page.description %}
+<p class="text-xl text-base-content/70 leading-relaxed">{{ page.description }}</p>
+{% endif %}
+<section class="flex items-center gap-3 pt-2">
+<div class="avatar placeholder">
+<div class="bg-primary text-primary-content rounded-full w-12">
+<span class="text-xl">O</span>
+</div>
+</div>
+<div class="flex flex-col">
+<h2 class="font-semibold text-base">Oxur Team</h2>
+<time class="text-sm text-base-content/60" datetime="{{ page.published_date | date: '%Y-%m-%d' }}">
+{{ page.published_date | date: "%Y/%m/%d" }}
+</time>
+</div>
+</section>
+</header>
 
-    <h1 class="text-4xl lg:text-5xl font-bold mb-4">{{ page.title }}</h1>
+<!-- Featured Image (if available) -->
+{% if page.data.image %}
+<img src="{{ page.data.image }}" alt="{{ page.title }}" class="w-full h-auto rounded-2xl object-cover max-h-96" />
+{% endif %}
 
-    {% include "post-meta.liquid" %}
+<!-- Post Content -->
+<section class="prose prose-lg md:prose-xl max-w-none">
+{{ page.content }}
+</section>
 
-    {% if page.description %}
-    <p class="text-xl text-base-content/70 mt-4">{{ page.description }}</p>
-    {% endif %}
-  </header>
+<!-- Post Footer -->
+<footer class="border-t border-base-300 pt-8 mt-8 space-y-6">
+<!-- Tags -->
+{% if page.tags.size > 0 %}
+<div class="flex flex-wrap gap-2 items-center">
+<span class="font-semibold text-sm">Tagged:</span>
+{% for tag in page.tags %}<a href="/blog/tags/{{ tag | slugify }}/" class="badge badge-lg badge-info transition-colors">{{ tag }}</a>{% endfor %}
+</div>
+{% endif %}
 
-  <!-- Post Content -->
-  <div class="blog-content">
-    {{ page.content }}
-  </div>
-
-  <!-- Post Footer -->
-  <footer class="not-prose mt-12 pt-8 border-t border-base-300">
-    <!-- Tags -->
-    {% if page.tags.size > 0 %}
-    <div class="mb-6">
-      <span class="font-semibold mr-2">Tags:</span>
-      {% for tag in page.tags %}
-      <a href="/blog/tags/{{ tag | slugify }}/" class="badge badge-outline badge-lg mr-2 mb-2 hover:badge-primary">
-        {{ tag }}
-      </a>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    <!-- Navigation to other posts -->
-    <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8">
-      <a href="/blog/" class="btn btn-outline">
-        <span class="iconify lucide--arrow-left size-5 mr-2"></span>
-        Back to Blog
-      </a>
-    </div>
-  </footer>
+<!-- Navigation -->
+<div class="flex flex-col sm:flex-row justify-between gap-4">
+<a href="/blog/" class="btn hover:btn-primary">
+<span class="iconify lucide--arrow-left size-5"></span>
+Back to Blog
+</a>
+</div>
+</footer>
 </article>
 
 {% include "footer.liquid" %}
@@ -62,35 +68,35 @@
 <script>
 // Add Oxur-specific keywords to Clojure highlighting
 if (hljs && hljs.getLanguage('clojure')) {
-  const clojureDef = hljs.getLanguage('clojure');
+const clojureDef = hljs.getLanguage('clojure');
 
-  hljs.registerLanguage('oxur', function(hljs) {
-    // Create a pattern to match Oxur definition forms
-    const oxurDefPattern = {
-      begin: '\\(\\s*(deffn|defimpl)\\b',
-      end: '(\\[|\\{|\\()',
-      excludeEnd: true,
-      keywords: {
-        keyword: 'deffn defimpl'
-      },
-      contains: [
-        {
-          className: 'title',
-          begin: '[a-zA-Z_\\-!.?+*=<>&#\'][a-zA-Z_\\-!.?+*=<>&#\'0-9/]*',
-          relevance: 0
-        }
-      ]
-    };
+hljs.registerLanguage('oxur', function(hljs) {
+// Create a pattern to match Oxur definition forms
+const oxurDefPattern = {
+begin: '\\(\\s*(deffn|defimpl)\\b',
+end: '(\\[|\\{|\\()',
+excludeEnd: true,
+keywords: {
+keyword: 'deffn defimpl'
+},
+contains: [
+{
+className: 'title',
+begin: '[a-zA-Z_\\-!.?+*=<>&#\'][a-zA-Z_\\-!.?+*=<>&#\'0-9/]*',
+relevance: 0
+}
+]
+};
 
-    // Combine with Clojure contains at the front (higher priority)
-    const contains = [oxurDefPattern].concat(clojureDef.contains || []);
+// Combine with Clojure contains at the front (higher priority)
+const contains = [oxurDefPattern].concat(clojureDef.contains || []);
 
-    return {
-      name: 'Oxur',
-      aliases: ['lisp'],
-      contains: contains
-    };
-  });
+return {
+name: 'Oxur',
+aliases: ['lisp'],
+contains: contains
+};
+});
 }
 hljs.highlightAll();
 </script>
