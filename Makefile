@@ -308,6 +308,7 @@ publish:
 	fi; \
 	echo "$(CYAN)• Moving $$FILENAME to posts/$(RESET)"; \
 	git mv "$$DRAFT" "$(SOURCE_DIR)/posts/$$FILENAME" && \
+	sed -i '' '/^is_draft: true$$/d' "$(SOURCE_DIR)/posts/$$FILENAME" && \
 	echo "$(GREEN)✓ Published: $(CYAN)$$FILENAME$(RESET)" && \
 	echo "$(YELLOW)→ Don't forget to commit the change$(RESET)"
 

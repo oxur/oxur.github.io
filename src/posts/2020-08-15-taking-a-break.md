@@ -3,7 +3,6 @@ title: "Taking a Break: Oxur on Hiatus"
 description: Pausing development to focus on other priorities - the journey continues, just not right now
 published_date: 2020-08-15 10:00:00 -0600
 layout: post.liquid
-is_draft: true
 tags:
   - announcement
   - oxur

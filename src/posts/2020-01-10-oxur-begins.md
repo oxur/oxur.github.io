@@ -3,7 +3,6 @@ title: "Oxur Begins: Building a(nother) Lisp for the Rust Ecosystem"
 description: A tentative experiment in language design - bringing Lisp's elegance to Rust's performance
 published_date: 2020-01-10 09:47:00 -0600
 layout: post.liquid
-is_draft: true
 tags:
   - announcement
   - oxur

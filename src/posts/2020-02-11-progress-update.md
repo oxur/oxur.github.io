@@ -3,7 +3,6 @@ title: "Progress Update: A Month of Experimentation"
 description: Early lessons from building Oxur - S-expressions, REPLs, and the joy of discovery
 published_date: 2020-02-11 19:00:00 -0600
 layout: post.liquid
-is_draft: true
 tags:
   - oxur
   - progress
