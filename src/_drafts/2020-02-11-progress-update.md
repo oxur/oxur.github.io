@@ -25,15 +25,15 @@ The core S-expression parser is solid. I can parse nested structures, handle quo
 
 The REPL exists! It's primitive, but you can define functions, call them, and see results. Logging support is in place, which has been invaluable for debugging the evaluation engine. Every step of parsing and evaluation can be traced.
 
-Most importantly: I've learned a ton about how Lisp evaluation works "under the hood" by implementing it. Reading about `eval` and `apply` is one thing; actually writing them in Rust is something else entirely.
+Most importantly: I've learned a ton about how to get Rust and Lisp evaluation working together. There's a future path where Lisp can interop with Rust seamlessly ...
 
 ## The Hard Parts
 
 **Performance vs Interactivity**: The tension I anticipated is real. Interpreted evaluation is wonderfully flexible but slow. Compiling through Rust is fast but destroys the interactive feel. I haven't solved this yet.
 
-**Type System Integration**: Rust's types are *everywhere*, and they want to be checked at compile time. Lisp's dynamic typing wants runtime flexibility. Finding the sweet spot - where we get Rust's safety without losing Lisp's expressiveness - is trickier than I expected.
+**Type System Integration**: Rust's types are *everywhere*, and they want to be checked at compile time. Lisp's dynamic typing wants runtime flexibility. Finding the sweet spot - where we get Rust's safety without losing Lisp's expressiveness - is trickier than I expected. In truth, I want Oxur to be a typed Lisp, so this will be a long, hard road.
 
-**Macro Design**: I want a macro system that can expand to Rust code, but macros-as-functions doesn't quite work. Macros-as-transformers on S-expressions makes more sense, but then how do we ensure they emit valid Rust? This feels like a core design question I haven't cracked yet.
+**Macro Design**: I want a macro system that can expand to Rust code, but macros-as-functions doesn't quite work. Macros-as-transformers on S-expressions makes more sense, but then how do we ensure they emit valid Rust? This feels like a core design question I haven't cracked yet. And reader macros. Always reader macros. That's going to be a tricky one.
 
 ## What I'm Learning
 
@@ -49,4 +49,4 @@ The repository will stay public, code will keep getting pushed (when it happens)
 
 If anyone out there is working on similar problems - Lisp/Rust interop, hybrid interpretation/compilation, homoiconic languages that compile - I'd love to connect. Sometimes the best part of working in public is the unexpected conversations.
 
-More updates when there's news worth sharing. Until then: happy hacking!
+More updates when there's news worth sharing. Until then: wish me luck!
