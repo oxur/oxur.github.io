@@ -24,7 +24,8 @@ SOURCE_DIR := src
 DEST_DIR := build
 CSS_SOURCE := $(SOURCE_DIR)/styles/app.css
 CSS_OUTPUT := $(DEST_DIR)/assets/css/main.css
-
+LOCALHOST := $(shell hostname)
+LOCALPORT := 5099
 # Default target
 .DEFAULT_GOAL := help
 
@@ -84,8 +85,8 @@ serve: clean build-css-dev
 	@sed -i '' "s/    commit_id: \".*\"/    commit_id: \"$(GIT_COMMIT)\"/" _cobalt.yml
 	@sed -i '' "s/    build_time: \".*\"/    build_time: \"$(BUILD_TIME)\"/" _cobalt.yml
 	@echo "$(BLUE)Starting Cobalt server (with drafts)...$(RESET)"
-	@echo "$(GREEN)→ Serving from $(SOURCE_DIR)/ at http://localhost:1024$(RESET)"
-	@$(COBALT) serve --drafts
+	@echo "$(GREEN)→ Serving from $(SOURCE_DIR)/ at http:// $(LOCALHOST):$(LOCALPORT)$(RESET)"
+	@$(COBALT) serve --host $(LOCALHOST) --port $(LOCALPORT) --drafts
 
 .PHONY: css-watch
 css-watch:
