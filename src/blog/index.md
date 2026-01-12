@@ -66,5 +66,5 @@ Featured Posts
 <!-- Categories/Tags Cloud -->
 <section class="mb-16">
 <h2 class="text-2xl font-bold mb-6">Browse by Tag</h2>
-<div class="flex flex-wrap gap-2">{% assign all_tags = "" | split: "" %}{% for post in collections.posts.pages %}{% for tag in post.tags %}{% unless all_tags contains tag %}{% assign all_tags = all_tags | push: tag %}{% endunless %}{% endfor %}{% endfor %}{% for tag in all_tags %}<a href="/blog/tags/{{ tag | slugify }}/" class="badge badge-lg badge-outline hover:badge-primary transition-colors">{{ tag }}</a> {% endfor %}</div>
+<div class="flex flex-wrap gap-2">{% assign all_tags = "" | split: "" %}{% for post in collections.posts.pages %}{% for tag in post.tags %}{% unless all_tags contains tag %}{% assign all_tags = all_tags | push: tag %}{% endunless %}{% endfor %}{% endfor %}{% for tag in all_tags %}<a href="/blog/tags/{{ tag | slugify }}/" class="badge badge-lg badge-info transition-colors">{{ tag }}</a> {% endfor %}</div>
 </section>
