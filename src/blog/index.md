@@ -1,6 +1,6 @@
 ---
 title: Notes of Oxur
-description: Insights on Oxur, Treebeard, Rust, ASTs, and Lisps
+description: hints of parentheses and Rust, subtle undertones of recursion, and a strong finish of homoiconicity
 layout: blog.liquid
 ---
 
