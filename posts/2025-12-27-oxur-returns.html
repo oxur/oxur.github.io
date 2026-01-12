@@ -2,8 +2,8 @@
 <html lang="en" class="group/html">
 <head>
 <meta charset="utf-8" />
-<title>Posts by Tag | The Oxur Language</title>
-<meta content="Browse Oxur blog posts by tag" name="description" />
+<title>Oxur Returns: Five Years Later, With Fresh Horns | The Oxur Language</title>
+<meta content="Resuming work on Oxur after a long break - new perspectives, mature tooling, and clearer vision" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Theme favicon -->
@@ -106,225 +106,122 @@
 </div>
 
 
-<main class="container mx-auto px-4 pt-24 pb-8 max-w-6xl">
+<article class="container mx-auto px-4 pt-24 pb-12 max-w-4xl flex flex-col gap-8">
+<!-- Post Header -->
+<header class="space-y-4">
+
+<div class="badge badge-outline badge-lg italic text-primary">announcement</div>
+
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">Oxur Returns: Five Years Later, With Fresh Horns</h1>
+
+<p class="text-xl text-base-content/70 leading-relaxed">Resuming work on Oxur after a long break - new perspectives, mature tooling, and clearer vision</p>
+
+<section class="flex items-center gap-3 pt-2">
+<div class="avatar placeholder">
+<div class="bg-primary text-primary-content rounded-full w-12">
+<span class="text-xl">O</span>
+</div>
+</div>
+<div class="flex flex-col">
+<h2 class="font-semibold text-base">Oxur Team</h2>
+<time class="text-sm text-base-content/60" datetime="2025-12-27">
+2025/12/27
+</time>
+</div>
+</section>
+</header>
+
+<!-- Featured Image (if available) -->
+
+<img src="/assets/images/blog/ruxxy.png" alt="Oxur Returns: Five Years Later, With Fresh Horns" class="w-full h-auto rounded-2xl object-cover max-h-96" />
 
 
-<div class="mb-12">
-<div class="breadcrumbs text-sm">
+<!-- Post Content -->
+<section class="prose prose-lg md:prose-xl max-w-none">
+<p>Five years. That's how long it's been since I put Oxur on hiatus. Over the holidays, I dusted off the code, read through the old commits, and felt that familiar spark: <em>this is still interesting</em>.</p>
+<p>But I'm not resuming where I left off. Too much has changed - both in the Rust ecosystem and in my clarity of language design for a compiled, typed Lisp. This isn't a continuation; it's a reboot with lessons learned.</p>
+<h2>What Changed</h2>
+<p><strong>The Rust ecosystem matured dramatically.</strong> In 2020, building language tools meant rolling your own parser infrastructure and fighting with half-finished crates. In 2025, we have battle-tested libraries: <code>syn</code> for Rust AST manipulation, <code>ratatui</code> for polished TUIs, <code>reedline</code> for sophisticated REPL input. The foundation is solid now.</p>
+<p><strong>I understand the problem better.</strong> Five years ago, I was trying to build "Lisp for Rust" without really knowing what that meant. Now, after five more years of programming in Go, Rust and Lisp -- and after returning to another Lisp effort (ZYLISP, written on Go), I see the design space <em>much</em> more clearly. The goal isn't Lisp-in-Rust (done many times) or Rust-with-parentheses (pointless). It's something more specific: <strong>a homoiconic language that compiles to Rust and integrates seamlessly with its ecosystem</strong>.</p>
+<p><strong>The project needs structure.</strong> 2020's Oxur was one crate, a jumble of experiments. 2025's Oxur is organized: <code>oxur-ast</code> for conversion between Oxur's AST (s-expression forms of the syn Rust AST), Rust AST (syn), and Rust source files; <code>oxur-comp</code> for the multi-stage compile chain; <code>oxur-lang</code> for Oxur macros, core forms, etc.; and <code>oxur-repl</code> for the interactive environment. Separation of concerns makes everything clearer.</p>
+<h2>What We've Built (So Far)</h2>
+<p>The past few days of winter break hacking produced:</p>
 <ul>
-<li><a href="/" class="link link-hover">Home</a></li>
-<li><a href="/blog/" class="link link-hover">Notes of Oxur</a></li>
-<li><a href="/blog/tags/" class="link link-hover">Tags</a></li>
-<li>announcement</li>
+<li><strong>Design documentation system</strong> - Using <code>oxur-oxd</code> docs tool to manage design docs like Rust's RFCs (update: we later renamed this to oxur-odm, document management)</li>
+<li><strong>Initial architecture</strong> - Outlined the compilation pipeline from S-expressions → Core Forms → Oxur AST → <code>syn</code> → Rust source</li>
+<li><strong>Project structure</strong> - Cargo workspace with clear crate boundaries</li>
+<li><strong>Tooling</strong> - Just the beginnings, but it's already making a big impact on productivity</li>
+<li><strong>Logo designs</strong> - Visual identity matters, even for programming languages</li>
 </ul>
-</div>
-<h1 class="text-4xl font-bold mt-4 text-brand-gradient">announcement</h1>
-<p class="text-base-content/70 mt-2">All posts tagged with "announcement"</p>
-</div>
+<p>We're going to be looking along these sorts of lines in the coming weeks:</p>
+<ol>
+<li><strong>Surface Forms</strong> - The ergonomic Lisp you write, with macros and sugar</li>
+<li><strong>Core Forms</strong> - A minimal, stable IR that macros expand to</li>
+<li><strong>Oxur AST</strong> - Rust concepts (Items, Exprs, Stmts) in S-expression form</li>
+<li><strong>syn AST</strong> - The standard Rust AST library</li>
+<li><strong>Rust Source</strong> - Pretty-printed code that goes to <code>rustc</code></li>
+</ol>
+<p>This pipeline solves problems that stumped me five years ago. The Core Forms layer gives us LFE-style stability - the front-end (Oxur syntax) can evolve independently from the back-end (Rust codegen). The Oxur AST layer protects us from <code>syn</code> API changes while keeping everything inspectable as S-expressions. My time spent on LFE over the past 14 years, and my work on the <a href="https://github.com/zylisp/design/blob/main/00-index.md">ZYLISP project</a> <em>really</em> helped push the vision forward in all these areas.</p>
+<h2>AI and Language Aside</h2>
+<p>It's interesting to note that five years ago I was working on both a Go-based Lisp and a Rust-based one, that for each the aim was full host language interop. The return to both in 2025 was no accident, either: one of the reasons I had to stop working on those projects originally was not having a team to help build. 2025 was the year of Claude.ai -- many of us in the software engineering and programming language communities had been very strong opponents to AI in 2024. The output was pure garbage. Claude.ai changed all that -- not overnight, but quickly enough (and with enough qualtiy) that those of us who were holdouts against the wave become die-hard surfers and lifeguards :-) Now I have the team. I can build the Lisp I had envisioned.</p>
+<p>The next question for me was "Since I can't do both, where do I want to put my focus? Go or Rust?" I definitely enjoy writing Rust more, but there are some serious benefits to Go. One of the biggies that my coworkers and I discovered throughout the year was how good a language it was for AI. I have done hands-on comparisons between Go, C/C++, Python, Ruby, Erlang, LFE, Java, JavaScript, TypeScript, Fortran, Racket, and more: Go beat them all for consistently higher quality. I lay this success at the feet of several responsible parties:</p>
+<ul>
+<li>language tooling</li>
+<li>static typing</li>
+<li>generally better than average code examples online (so pretty good corpora for training language models)</li>
+</ul>
+<p>It wasn't until very later in the year that I started experimenting with AI and Rust. And wow. Just. Wow. And I thought <em>Go</em> had been a good fit for AI! Rust beat it hands-down:</p>
+<ul>
+<li>better tooling</li>
+<li>unbelievably high quality of documentation (which is oddly easy to overlook until your AI depends upon it to do anything <em>remotely</em> correct!)</li>
+<li>much more rigorous typing than Go</li>
+<li>very high quality of example code online</li>
+</ul>
+<p>Best of all, I've always had more fun writing in Rust than Go, so this was quite the delightful outcome :-)</p>
+<h2>What's Next</h2>
+<p>I'm being realistic this time. This is still a side project, still experimental, still uncertain. But the foundation feels right in a way 2020's didn't.</p>
+<p>Near-term focus:</p>
+<ul>
+<li>Implement the full compilation pipeline</li>
+<li>Build a polished REPL using modern TUI crates</li>
+<li>Iterate on design documents to accurately represent language progress, additions, pivots, etc.</li>
+<li>Work on core forms</li>
+<li>Experiment with language syntax/macros</li>
+</ul>
+<p>I'm working in two-day sprints during my time off and making insane amounts of progress. But the goal isn't a releasable language - it's exploring the design space with better tools and clearer vision so that by the time the winter break is over, there's enough momentum that I can continue with the project during nights and weekends.</p>
+<h2>Join the Journey</h2>
+<p>The repository is at <a href="https://github.com/oxur/oxur">github.com/oxur/oxur</a> (cleaned up, reorganized, active again). Development logs will appear here as blog posts. Design documents are in the repo's <code>design/</code> directory, in particular, <a href="https://github.com/oxur/oxur/blob/main/crates/design/docs/index.md">here</a>.</p>
+<p>If you're interested in:</p>
+<ul>
+<li>Lisp/Rust interop and hybrid compilation/interpretation</li>
+<li>Homoiconic languages with static type systems</li>
+<li>Modern language tooling and REPL design</li>
+<li>Related experiments and explorations</li>
+</ul>
+<p>...then follow along! This iteration of Oxur is informed by 30 years of professional experience, nearly 15 years as an LFE contributor, and five years of deep thinking about Lisps on hosted statically typed languages.</p>
+<p>It's good to be back. Let's see what we can build :-)</p>
 
-<!-- Posts by Year and Month -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="mb-12">
-<h2 class="text-3xl font-bold mb-6">2025</h2>
-
-
-
-
-
-
-
-
-<div class="mb-8">
-<h3 class="text-2xl font-semibold mb-4 text-primary">December</h3>
-<div class="space-y-4">
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Horizontal Card Style -->
-<article class="card card-side blog-card border border-base-content/20 shadow-md hover:shadow-lg transition-shadow rounded-2xl">
-
-<figure class="w-48 shrink-0">
-<img src="/assets/images/blog/ruxxy.png" alt="Oxur Returns: Five Years Later, With Fresh Horns" class="h-full object-cover" />
-</figure>
-
-<div class="card-body">
-<div class="flex items-center gap-3 text-sm text-base-content/60 mb-3">
-<time class="flex items-center gap-1" datetime="2025-12-27">
-December 27, 2025
-<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
-</time>
-
-<span class="flex items-center gap-1">
-<span class="iconify lucide--clock size-4"></span>
-6 min read
-</span>
-
-</div>
-<h2 class="card-title text-xl hover:text-primary transition-colors">
-<a href="/posts/2025-12-27-oxur-returns.html" class="link-hover">Oxur Returns: Five Years Later, With Fresh Horns</a>
-</h2>
-
-<p class="text-base-content/70 mt-2 line-clamp-3">Five years. That's how long it's been since I put Oxur on hiatus. Over the holidays, I dusted off the code, read through the old commits, and felt ...</p>
-
-<div class="card-actions justify-start mt-4">
-<a href="/blog/tags/announcement/" class="badge badge-info badge-sm transition-colors hover:badge-primary">announcement</a> <a href="/blog/tags/oxur/" class="badge badge-info badge-sm transition-colors hover:badge-primary">oxur</a> <a href="/blog/tags/rust/" class="badge badge-info badge-sm transition-colors hover:badge-primary">rust</a> 
-</div>
-</div>
-</article>
-
-
-
-
-
-
-
-</div></div>
 </section>
 
-<section class="mb-12">
-<h2 class="text-3xl font-bold mb-6">2020</h2>
+<!-- Post Footer -->
+<footer class="border-t border-base-300 pt-8 mt-8 space-y-6">
+<!-- Tags -->
 
-
-
-
-
-
-
-
-<div class="mb-8">
-<h3 class="text-2xl font-semibold mb-4 text-primary">August</h3>
-<div class="space-y-4">
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Horizontal Card Style -->
-<article class="card card-side blog-card border border-base-content/20 shadow-md hover:shadow-lg transition-shadow rounded-2xl">
-
-<div class="card-body">
-<div class="flex items-center gap-3 text-sm text-base-content/60 mb-3">
-<time class="flex items-center gap-1" datetime="2020-08-15">
-August 15, 2020
-<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
-</time>
-
-<span class="flex items-center gap-1">
-<span class="iconify lucide--clock size-4"></span>
-3 min read
-</span>
-
+<div class="flex flex-wrap gap-2 items-center">
+<span class="font-semibold text-sm">Tagged:</span>
+<a href="/blog/tags/announcement/" class="badge badge-lg badge-info transition-colors">announcement</a><a href="/blog/tags/oxur/" class="badge badge-lg badge-info transition-colors">oxur</a><a href="/blog/tags/rust/" class="badge badge-lg badge-info transition-colors">rust</a><a href="/blog/tags/lisp/" class="badge badge-lg badge-info transition-colors">lisp</a>
 </div>
-<h2 class="card-title text-xl hover:text-primary transition-colors">
-<a href="/posts/2020-08-15-taking-a-break.html" class="link-hover">Taking a Break: Oxur on Hiatus</a>
-</h2>
 
-<p class="text-base-content/70 mt-2 line-clamp-3">A brief update: I'm putting Oxur on hiatus for the foreseeable future.
-</p>
 
-<div class="card-actions justify-start mt-4">
-<a href="/blog/tags/announcement/" class="badge badge-info badge-sm transition-colors hover:badge-primary">announcement</a> <a href="/blog/tags/oxur/" class="badge badge-info badge-sm transition-colors hover:badge-primary">oxur</a> 
+<!-- Navigation -->
+<div class="flex flex-col sm:flex-row justify-between gap-4">
+<a href="/blog/" class="btn hover:btn-primary">
+<span class="iconify lucide--arrow-left size-5"></span>
+Back to Blog
+</a>
 </div>
-</div>
+</footer>
 </article>
-
-
-
-
-
-
-
-
-
-</div></div>
-
-<div class="mb-8">
-<h3 class="text-2xl font-semibold mb-4 text-primary">January</h3>
-<div class="space-y-4">
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Horizontal Card Style -->
-<article class="card card-side blog-card border border-base-content/20 shadow-md hover:shadow-lg transition-shadow rounded-2xl">
-
-<figure class="w-48 shrink-0">
-<img src="/assets/images/blog/ochre-aurochs.jpg" alt="Oxur Begins: Building a(nother) Lisp for the Rust Ecosystem" class="h-full object-cover" />
-</figure>
-
-<div class="card-body">
-<div class="flex items-center gap-3 text-sm text-base-content/60 mb-3">
-<time class="flex items-center gap-1" datetime="2020-01-10">
-January 10, 2020
-<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
-</time>
-
-<span class="flex items-center gap-1">
-<span class="iconify lucide--clock size-4"></span>
-4 min read
-</span>
-
-</div>
-<h2 class="card-title text-xl hover:text-primary transition-colors">
-<a href="/posts/2020-01-10-oxur-begins.html" class="link-hover">Oxur Begins: Building a(nother) Lisp for the Rust Ecosystem</a>
-</h2>
-
-<p class="text-base-content/70 mt-2 line-clamp-3">Today marks the beginning of something I've been thinking about for a while: Oxur, a Lisp designed to work seamlessly with Rust.
-</p>
-
-<div class="card-actions justify-start mt-4">
-<a href="/blog/tags/announcement/" class="badge badge-info badge-sm transition-colors hover:badge-primary">announcement</a> <a href="/blog/tags/oxur/" class="badge badge-info badge-sm transition-colors hover:badge-primary">oxur</a> <a href="/blog/tags/lisp/" class="badge badge-info badge-sm transition-colors hover:badge-primary">lisp</a> 
-</div>
-</div>
-</article>
-
-
-
-
-</div></div>
-</section>
-
-
-
-
-</main>
 
 <footer class="bg-base-200/30 border-base-200 m-5 rounded-xl border">
     <div class="p-6 sm:container sm:py-12">
@@ -448,6 +345,42 @@ January 10, 2020
 </div>
 
 
+<script src="/assets/js/highlight-all.min.js"></script>
+<script>
+// Add Oxur-specific keywords to Clojure highlighting
+if (hljs && hljs.getLanguage('clojure')) {
+const clojureDef = hljs.getLanguage('clojure');
+
+hljs.registerLanguage('oxur', function(hljs) {
+// Create a pattern to match Oxur definition forms
+const oxurDefPattern = {
+begin: '\\(\\s*(deffn|defimpl)\\b',
+end: '(\\[|\\{|\\()',
+excludeEnd: true,
+keywords: {
+keyword: 'deffn defimpl'
+},
+contains: [
+{
+className: 'title',
+begin: '[a-zA-Z_\\-!.?+*=<>&#\'][a-zA-Z_\\-!.?+*=<>&#\'0-9/]*',
+relevance: 0
+}
+]
+};
+
+// Combine with Clojure contains at the front (higher priority)
+const contains = [oxurDefPattern].concat(clojureDef.contains || []);
+
+return {
+name: 'Oxur',
+aliases: ['lisp'],
+contains: contains
+};
+});
+}
+hljs.highlightAll();
+</script>
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
