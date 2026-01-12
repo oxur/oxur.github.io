@@ -7,6 +7,7 @@ site:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     commit_id: "fb4d05f"
     build_time: "2026-01-12T17:29:20Z"
 =======
@@ -25,6 +26,10 @@ site:
     commit_id: "72bfb8d"
     build_time: "2026-01-12T06:27:08Z"
 >>>>>>> 3885dbb (Add tag pages with year/month grouping and pagination)
+=======
+    commit_id: "216584d"
+    build_time: "2026-01-12T17:38:40Z"
+>>>>>>> fa3f3f7 (Updated content.)
 
 # Build settings
 source: src
