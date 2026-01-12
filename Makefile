@@ -23,8 +23,7 @@ COBALT := cobalt
 SOURCE_DIR := src
 DEST_DIR := build
 CSS_SOURCE := $(SOURCE_DIR)/styles/app.css
-CSS_OUTPUT_DEV := $(SOURCE_DIR)/assets/css/main.css
-CSS_OUTPUT_PROD := $(DEST_DIR)/assets/css/main.css
+CSS_OUTPUT := $(DEST_DIR)/assets/css/main.css
 
 # Default target
 .DEFAULT_GOAL := help
@@ -101,7 +100,7 @@ build: build-cobalt build-css
 	@cp $(SOURCE_DIR)/CNAME $(DEST_DIR)/CNAME
 	@echo "$(GREEN)✓ Production build complete$(RESET)"
 	@echo "$(CYAN)• Output directory: $(DEST_DIR)/$(RESET)"
-	@echo "$(CYAN)• CSS size: $$(du -h $(CSS_OUTPUT_PROD) | cut -f1)$(RESET)"
+	@echo "$(CYAN)• CSS size: $$(du -h $(CSS_OUTPUT) | cut -f1)$(RESET)"
 	@echo "$(CYAN)• Total size: $$(du -sh $(DEST_DIR) | cut -f1)$(RESET)"
 
 .PHONY: build-cobalt
@@ -119,7 +118,7 @@ build-cobalt:
 build-css:
 	@echo "$(BLUE)Compiling CSS for production...$(RESET)"
 	@echo "$(CYAN)• Source: $(CSS_SOURCE)$(RESET)"
-	@echo "$(CYAN)• Output: $(CSS_OUTPUT_PROD)$(RESET)"
+	@echo "$(CYAN)• Output: $(CSS_OUTPUT)$(RESET)"
 	@$(NPM) run css:build
 	@echo "$(GREEN)✓ CSS compilation complete$(RESET)"
 
@@ -127,7 +126,7 @@ build-css:
 build-css-dev:
 	@echo "$(BLUE)Compiling CSS for dev...$(RESET)"
 	@echo "$(CYAN)• Source: $(CSS_SOURCE)$(RESET)"
-	@echo "$(CYAN)• Output: $(CSS_OUTPUT_PROD)$(RESET)"
+	@echo "$(CYAN)• Output: $(CSS_OUTPUT)$(RESET)"
 	@$(NPM) run css:build:dev
 	@echo "$(GREEN)✓ CSS compilation complete$(RESET)"
 
@@ -137,15 +136,13 @@ clean:
 	@echo "$(BLUE)Cleaning build artifacts...$(RESET)"
 	@rm -rf $(DEST_DIR)/*.html
 	@rm -rf $(DEST_DIR)/assets/*.css $(DEST_DIR)/assets/*.js
-	@rm -rf $(SOURCE_DIR)/assets/css/main.css
 	@rm -rf .cobalt/
 	@echo "$(GREEN)✓ Clean complete$(RESET)"
 
 .PHONY: clean-css
 clean-css:
 	@echo "$(BLUE)Cleaning generated CSS files...$(RESET)"
-	@rm -f $(CSS_OUTPUT_DEV)
-	@rm -f $(CSS_OUTPUT_PROD)
+	@rm -f $(CSS_OUTPUT)
 	@rm -f $(DEST_DIR)/assets/css/app.css $(DEST_DIR)/assets/css/daisyui.css
 	@echo "$(GREEN)✓ CSS files cleaned$(RESET)"
 
