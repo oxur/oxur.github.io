@@ -12,7 +12,7 @@ description: Oxur - A modern, expressive Lisp dialect for systems programming
 <div class="order-2 lg:order-1">
 <h1 class="text-center text-3xl/tight leading-10 font-semibold tracking-tight sm:text-start lg:text-4xl/tight">
 <span class="text-brand-gradient">Oxur</span>
- - A Modern Lisp for the Next Generation of Developers
+ (/ˈoʊkər/ OH-kər) - A Modern Lisp for the Next Generation of Developers
 </h1>
 <h5 class="text-base-content/80 mt-8 text-center sm:text-start lg:text-lg">
 Experience the power of Lisp built on Rust—with modern ergonomics, blazing performance, and comprehensive tooling. Build expressive, maintainable systems with confidence.
