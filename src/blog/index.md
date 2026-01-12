@@ -1,5 +1,5 @@
 ---
-title: Oxur Notes
+title: Notes of Oxur
 description: Insights on Oxur, Treebeard, Rust, ASTs, and Lisps
 layout: blog.liquid
 ---
