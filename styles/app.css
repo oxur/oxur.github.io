@@ -66,3 +66,72 @@ pre code.hljs {
         }
     }
 }
+
+/* Blog-specific styles */
+
+/* Custom darker cards for blog - works in both light and dark mode */
+.blog-card {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* In light mode, make it lighter instead */
+@media (prefers-color-scheme: light) {
+    .blog-card {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Ensure prose content works well with DaisyUI themes */
+.blog-content {
+    @apply prose prose-lg max-w-none;
+}
+
+/* Style code blocks */
+.blog-content pre {
+    @apply rounded-box;
+}
+
+/* Style inline code */
+.blog-content code:not(pre code) {
+    @apply bg-base-200 px-1.5 py-0.5 rounded text-sm;
+}
+
+/* Smooth transitions for theme switching */
+article, .card, .hero {
+    @apply transition-colors duration-200;
+}
+
+/* Better image handling in posts */
+.blog-content img {
+    @apply rounded-box shadow-md;
+}
+
+/* Block quotes styling */
+.blog-content blockquote {
+    @apply border-l-4 border-primary bg-base-200/50 rounded-r-box;
+}
+
+/* Line clamp utilities for truncating text */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Enhanced card interactions */
+.card.group:hover {
+    @apply shadow-2xl;
+}
+
+/* Smooth link hover effects */
+a:hover .iconify {
+    @apply text-primary;
+}
