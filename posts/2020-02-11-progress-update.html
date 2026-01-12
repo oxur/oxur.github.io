@@ -2,8 +2,8 @@
 <html lang="en" class="group/html">
 <head>
 <meta charset="utf-8" />
-<title>Notes of Oxur | The Oxur Language</title>
-<meta content="hints of parentheses and Rust, subtle undertones of recursion, and a strong finish of homoiconicity" name="description" />
+<title>Progress Update: A Month of Experimentation | The Oxur Language</title>
+<meta content="Early lessons from building Oxur - S-expressions, REPLs, and the joy of discovery" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Theme favicon -->
@@ -106,151 +106,77 @@
 </div>
 
 
-<main class="container mx-auto px-4 pt-24 pb-8 max-w-6xl">
-  <!-- Hero Section -->
-  <div class="hero bg-base-200 rounded-xl mb-12 py-12">
-    <div class="hero-content text-center">
-      <div class="max-w-2xl">
-        <h1 class="text-5xl font-bold text-brand-gradient leading-tight">Notes of Oxur</h1>
-        <p class="py-6 text-lg text-base-content/70 leading-relaxed italic">
-          (hints of parentheses and Rust, subtle undertones of recursion,<br/>and a strong finish of homoiconicity)
-        </p>
-      </div>
-    </div>
-  </div>
+<article class="container mx-auto px-4 pt-24 pb-12 max-w-4xl flex flex-col gap-8">
+<!-- Post Header -->
+<header class="space-y-4">
 
-  <!-- Featured Posts Section -->
-<section class="mb-16">
-<h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-<span class="iconify lucide--star size-6 text-primary"></span>
-Featured Posts
-</h2>
-<!-- First row: 2 columns -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="badge badge-outline badge-lg italic text-primary">oxur</div>
+
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">Progress Update: A Month of Experimentation</h1>
+
+<p class="text-xl text-base-content/70 leading-relaxed">Early lessons from building Oxur - S-expressions, REPLs, and the joy of discovery</p>
+
+<section class="flex items-center gap-3 pt-2">
+<div class="avatar placeholder">
+<div class="bg-primary text-primary-content rounded-full w-12">
+<span class="text-xl">O</span>
 </div>
-<!-- Second row: 1 full-width featured post -->
+</div>
+<div class="flex flex-col">
+<h2 class="font-semibold text-base">Oxur Team</h2>
+<time class="text-sm text-base-content/60" datetime="2020-02-11">
+2020/02/11
+</time>
+</div>
 </section>
-<!-- Recent Posts Section -->
-<section class="mb-16">
-  <div class="flex justify-between items-center mb-6">
-    <h2 class="text-2xl font-bold">Recent Posts</h2>
-    <a href="/blog/archives/" class="btn btn-ghost btn-sm">
-      View All
-      <span class="iconify lucide--arrow-right size-4 ml-1"></span>
-    </a>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Vertical Card Style (default) -->
-<article class="card blog-card border border-base-content/20 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group rounded-2xl">
-<a href="/posts/2020-08-15-taking-a-break.html" class="relative">
-<figure class="bg-gradient-to-br from-primary/20 to-secondary/20 h-40 flex items-center justify-center">
-<span class="iconify lucide--file-text size-16 text-primary/40"></span>
-</figure>
-<p><a href="/blog/tags/announcement/" class="badge badge-info absolute top-3 right-3 z-10 transition-colors hover:badge-primary">announcement</a></p>
-</a>
-<div class="card-body p-5">
-<div class="flex items-center gap-2 text-sm text-base-content/60 mb-2">
-<time class="flex items-center gap-1" datetime="2020-08-15">
-August 15, 2020
-<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
-</time>
-<span class="flex items-center gap-1">
-<span class="iconify lucide--clock size-4"></span>
-3 min read
-</span>
-</div>
-<a href="/posts/2020-08-15-taking-a-break.html">
-<h2 class="card-title text-xl hover:text-primary transition-colors leading-tight">Taking a Break: Oxur on Hiatus</h2>
-</a>
-<p class="text-base-content/70 text-sm line-clamp-3 mt-2">A brief update: I'm putting Oxur on hiatus for the foreseeable future.
-</p>
-<a href="/posts/2020-08-15-taking-a-break.html" class="flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all mt-4">
-Read article
-<svg viewBox="0 0 16 16" fill="none" class="w-4 h-4" stroke="currentColor">
-<path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</a>
-</div>
-</article>
-<!-- Vertical Card Style (default) -->
-<article class="card blog-card border border-base-content/20 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group rounded-2xl">
-<a href="/posts/2020-02-11-progress-update.html" class="relative">
-<figure class="overflow-hidden">
-<img src="/assets/images/blog/ochre-aurochs.jpg" alt="Progress Update: A Month of Experimentation" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-</figure>
-<p><a href="/blog/tags/oxur/" class="badge badge-info absolute top-3 right-3 z-10 transition-colors hover:badge-primary">oxur</a></p>
-</a>
-<div class="card-body p-5">
-<div class="flex items-center gap-2 text-sm text-base-content/60 mb-2">
-<time class="flex items-center gap-1" datetime="2020-02-11">
-February 11, 2020
-<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
-</time>
-<span class="flex items-center gap-1">
-<span class="iconify lucide--clock size-4"></span>
-5 min read
-</span>
-</div>
-<a href="/posts/2020-02-11-progress-update.html">
-<h2 class="card-title text-xl hover:text-primary transition-colors leading-tight">Progress Update: A Month of Experimentation</h2>
-</a>
-<p class="text-base-content/70 text-sm line-clamp-3 mt-2">It's been about a month since the first commit, and I wanted to share where things stand with Oxur.
-</p>
-<a href="/posts/2020-02-11-progress-update.html" class="flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all mt-4">
-Read article
-<svg viewBox="0 0 16 16" fill="none" class="w-4 h-4" stroke="currentColor">
-<path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</a>
-</div>
-</article>
-<!-- Vertical Card Style (default) -->
-<article class="card blog-card border border-base-content/20 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group rounded-2xl">
-<a href="/posts/2020-01-10-oxur-begins.html" class="relative">
-<figure class="overflow-hidden">
-<img src="/assets/images/blog/ochre-aurochs.jpg" alt="Oxur Begins: Building a(nother) Lisp for the Rust Ecosystem" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-</figure>
-<p><a href="/blog/tags/announcement/" class="badge badge-info absolute top-3 right-3 z-10 transition-colors hover:badge-primary">announcement</a></p>
-</a>
-<div class="card-body p-5">
-<div class="flex items-center gap-2 text-sm text-base-content/60 mb-2">
-<time class="flex items-center gap-1" datetime="2020-01-10">
-January 10, 2020
-<div class="w-1 h-1 rounded-full bg-base-content/40"></div>
-</time>
-<span class="flex items-center gap-1">
-<span class="iconify lucide--clock size-4"></span>
-4 min read
-</span>
-</div>
-<a href="/posts/2020-01-10-oxur-begins.html">
-<h2 class="card-title text-xl hover:text-primary transition-colors leading-tight">Oxur Begins: Building a(nother) Lisp for the Rust Ecosystem</h2>
-</a>
-<p class="text-base-content/70 text-sm line-clamp-3 mt-2">Today marks the beginning of something I've been thinking about for a while: Oxur, a Lisp designed to work seamlessly...</p>
-<a href="/posts/2020-01-10-oxur-begins.html" class="flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all mt-4">
-Read article
-<svg viewBox="0 0 16 16" fill="none" class="w-4 h-4" stroke="currentColor">
-<path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</a>
-</div>
-</article>
-  </div>
-</section>
-<!-- More Button -->
-<div class="flex justify-end mb-16">
-<a href="/blog/archives/" class="btn btn-primary">
-More
-<span class="iconify lucide--arrow-right size-4 ml-1"></span>
-</a>
-</div>
-<!-- Categories/Tags Cloud -->
-<section class="mb-16">
-<h2 class="text-2xl font-bold mb-6">Browse by Tag</h2>
-<div class="flex flex-wrap gap-2"><a href="/blog/tags/announcement/" class="badge badge-lg badge-info transition-colors">announcement</a> <a href="/blog/tags/oxur/" class="badge badge-lg badge-info transition-colors">oxur</a> <a href="/blog/tags/progress/" class="badge badge-lg badge-info transition-colors">progress</a> <a href="/blog/tags/rust/" class="badge badge-lg badge-info transition-colors">rust</a> <a href="/blog/tags/lisp/" class="badge badge-lg badge-info transition-colors">lisp</a> </div>
+</header>
+
+<!-- Featured Image (if available) -->
+
+<img src="/assets/images/blog/ochre-aurochs.jpg" alt="Progress Update: A Month of Experimentation" class="w-full h-auto rounded-2xl object-cover max-h-96" />
+
+
+<!-- Post Content -->
+<section class="prose prose-lg md:prose-xl max-w-none">
+<p>It's been about a month since the first commit, and I wanted to share where things stand with Oxur.</p>
+<h2>What's Working</h2>
+<p>The core S-expression parser is solid. I can parse nested structures, handle quotes, and represent everything as a clean Rust <code>enum</code>. The homoiconicity is real - the code you write <em>is</em> the data structure you manipulate. There's something deeply satisfying about that.</p>
+<p>The REPL exists! It's primitive, but you can define functions, call them, and see results. Logging support is in place, which has been invaluable for debugging the evaluation engine. Every step of parsing and evaluation can be traced.</p>
+<p>Most importantly: I've learned a ton about how to get Rust and Lisp evaluation working together. There's a future path where Lisp can interop with Rust seamlessly ...</p>
+<h2>The Hard Parts</h2>
+<p><strong>Performance vs Interactivity</strong>: The tension I anticipated is real. Interpreted evaluation is wonderfully flexible but slow. Compiling through Rust is fast but destroys the interactive feel. I haven't solved this yet.</p>
+<p><strong>Type System Integration</strong>: Rust's types are <em>everywhere</em>, and they want to be checked at compile time. Lisp's dynamic typing wants runtime flexibility. Finding the sweet spot - where we get Rust's safety without losing Lisp's expressiveness - is trickier than I expected. In truth, I want Oxur to be a typed Lisp, so this will be a long, hard road.</p>
+<p><strong>Macro Design</strong>: I want a macro system that can expand to Rust code, but macros-as-functions doesn't quite work. Macros-as-transformers on S-expressions makes more sense, but then how do we ensure they emit valid Rust? This feels like a core design question I haven't cracked yet. And reader macros. Always reader macros. That's going to be a tricky one.</p>
+<h2>What I'm Learning</h2>
+<p>Building a language, even a small one, forces you to make a hundred tiny decisions. Should function names be symbols or strings? How do we handle recursion? What's the scope model? Each choice cascades into others.</p>
+<p>The Rust compiler is an incredible teacher. When my code doesn't compile, the error messages usually point directly at the conceptual problem. It's like having a patient mentor who won't let you proceed until you really understand what you're doing.</p>
+<h2>Path Forward</h2>
+<p>I'm going to keep experimenting, but I need to be realistic about time. This is a spare-time project, and life has a way of filling spare time with other things. I'm less interested in building a production-ready system right now than in exploring the design space.</p>
+<p>The repository will stay public, code will keep getting pushed (when it happens), but I'm not setting aggressive timelines. The goal is learning and discovery, not shipping v1.0.</p>
+<p>If anyone out there is working on similar problems - Lisp/Rust interop, hybrid interpretation/compilation, homoiconic languages that compile - I'd love to connect. Sometimes the best part of working in public is the unexpected conversations.</p>
+<p>More updates when there's news worth sharing. Until then: wish me luck!</p>
+
 </section>
 
-</main>
+<!-- Post Footer -->
+<footer class="border-t border-base-300 pt-8 mt-8 space-y-6">
+<!-- Tags -->
+
+<div class="flex flex-wrap gap-2 items-center">
+<span class="font-semibold text-sm">Tagged:</span>
+<a href="/blog/tags/oxur/" class="badge badge-lg badge-info transition-colors">oxur</a><a href="/blog/tags/progress/" class="badge badge-lg badge-info transition-colors">progress</a><a href="/blog/tags/rust/" class="badge badge-lg badge-info transition-colors">rust</a><a href="/blog/tags/lisp/" class="badge badge-lg badge-info transition-colors">lisp</a>
+</div>
+
+
+<!-- Navigation -->
+<div class="flex flex-col sm:flex-row justify-between gap-4">
+<a href="/blog/" class="btn hover:btn-primary">
+<span class="iconify lucide--arrow-left size-5"></span>
+Back to Blog
+</a>
+</div>
+</footer>
+</article>
 
 <footer class="bg-base-200/30 border-base-200 m-5 rounded-xl border">
     <div class="p-6 sm:container sm:py-12">
@@ -374,6 +300,42 @@ More
 </div>
 
 
+<script src="/assets/js/highlight-all.min.js"></script>
+<script>
+// Add Oxur-specific keywords to Clojure highlighting
+if (hljs && hljs.getLanguage('clojure')) {
+const clojureDef = hljs.getLanguage('clojure');
+
+hljs.registerLanguage('oxur', function(hljs) {
+// Create a pattern to match Oxur definition forms
+const oxurDefPattern = {
+begin: '\\(\\s*(deffn|defimpl)\\b',
+end: '(\\[|\\{|\\()',
+excludeEnd: true,
+keywords: {
+keyword: 'deffn defimpl'
+},
+contains: [
+{
+className: 'title',
+begin: '[a-zA-Z_\\-!.?+*=<>&#\'][a-zA-Z_\\-!.?+*=<>&#\'0-9/]*',
+relevance: 0
+}
+]
+};
+
+// Combine with Clojure contains at the front (higher priority)
+const contains = [oxurDefPattern].concat(clojureDef.contains || []);
+
+return {
+name: 'Oxur',
+aliases: ['lisp'],
+contains: contains
+};
+});
+}
+hljs.highlightAll();
+</script>
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
