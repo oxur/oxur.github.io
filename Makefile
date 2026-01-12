@@ -188,20 +188,28 @@ commit:
 
 .PHONY: push
 push:
-	@echo "$(BLUE)Pushing to origin/$(GIT_BRANCH)...$(RESET)"
-	@git push origin $(GIT_BRANCH)
-	@echo "$(GREEN)✓ Pushed to remote$(RESET)"
+	@echo "$(BLUE)Pushing changes ...$(RESET)"
+	@echo "$(CYAN)• Codeberg:$(RESET)"
+	@git push codeberg main && git push codeberg --tags
+	@echo "$(GREEN)✓ Pushed$(RESET)"
+	@echo "$(CYAN)• Github:$(RESET)"
+	@git push github main && git push github --tags
+	@echo "$(GREEN)✓ Pushed$(RESET)"
 
 .PHONY: deploy
 deploy: build
-	@echo "$(BLUE)Deploying to GitHub Pages...$(RESET)"
-	@echo "$(YELLOW)Committing build artifacts...$(RESET)"
-	@git add $(DEST_DIR)/
-	@git commit -m "Deploy site - $(BUILD_TIME)" || echo "$(YELLOW)No changes to commit$(RESET)"
-	@echo "$(YELLOW)Pushing to origin/$(GIT_BRANCH)...$(RESET)"
-	@git push origin $(GIT_BRANCH)
-	@echo "$(GREEN)✓ Deployment triggered$(RESET)"
-	@echo "$(CYAN)→ Site will be live at $(SITE_URL) shortly$(RESET)"
+	@echo "$(BLUE)Deploying site...$(RESET)"
+	@cd $(DEST_DIR) && \
+	git add -A && \
+	(git commit -m "Site rebuild - $(BUILD_TIME)" || echo "$(YELLOW)No changes to commit$(RESET)")
+	@echo "$(CYAN)• Codeberg:$(RESET)"
+	@git push codeberg pages
+	@echo "$(GREEN)✓ Published$(RESET)"
+	@echo "$(CYAN)• Github:$(RESET)"
+	@git push github pages
+	@echo "$(GREEN)✓ Published$(RESET)"
+	@echo "$(GREEN)✓ Deployment complete$(RESET)"
+	@echo "$(CYAN)→ Site should now be live at $(SITE_URL)$(RESET)"
 
 .PHONY: tag
 tag:
