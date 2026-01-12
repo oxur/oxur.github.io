@@ -6,6 +6,7 @@ site:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     commit_id: "fb4d05f"
     build_time: "2026-01-12T17:29:20Z"
 =======
@@ -20,6 +21,10 @@ site:
     commit_id: "e03b125"
     build_time: "2026-01-12T06:14:47Z"
 >>>>>>> 72bfb8d (Add pagination to blog archives)
+=======
+    commit_id: "72bfb8d"
+    build_time: "2026-01-12T06:27:08Z"
+>>>>>>> 3885dbb (Add tag pages with year/month grouping and pagination)
 
 # Build settings
 source: src
