@@ -207,8 +207,6 @@ deploy: build
 	@cd $(DEST_DIR) && \
 	git add -A && \
 	(git commit -m "Site rebuild - $(BUILD_TIME)" || echo "$(YELLOW)No changes to commit$(RESET)")
-	@echo "$(CYAN)Updating site build changes for $(CODE_BRANCH) branch ...$(RESET)"
-	@git commit build _cobalt.yml -m "Site rebuild - $(BUILD_TIME)"
 	@echo "$(CYAN)• Codeberg:$(RESET)"
 	@git push codeberg $(PUBLISH_BRANCH)
 	@echo "$(GREEN)✓ Published$(RESET)"
