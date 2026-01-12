@@ -14,6 +14,7 @@ categories:
 data:
   read_time: 5
   featured: false
+  image: /assets/images/blog/ochre-aurochs.jpg
 ---
 
 It's been about a month since the first commit, and I wanted to share where things stand with Oxur.
