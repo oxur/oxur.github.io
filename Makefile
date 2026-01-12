@@ -169,6 +169,20 @@ update:
 	@$(NPM) update
 	@echo "$(GREEN)✓ Dependencies updated$(RESET)"
 
+.PHONY: setup
+setup: install
+	@echo "$(BLUE)Setting up worktree...$(RESET)"
+	@git fetch origin
+	@if [ ! -d "$(DEST_DIR)/.git" ]; then \
+		if [ -d "$(DEST_DIR)" ]; then \
+			echo "$(YELLOW)Removing existing build directory...$(RESET)"; \
+			rm -rf $(DEST_DIR); \
+		fi; \
+		git worktree add $(DEST_DIR) pages && \
+		echo "$(GREEN)✓ Worktree created$(RESET)"; \
+	else \
+		echo "$(YELLOW)Worktree already exists$(RESET)"; \
+	fi
 .PHONY: copy-reference
 copy-reference:
 	@echo "$(BLUE)Copying template reference...$(RESET)"
@@ -207,6 +221,7 @@ deploy: build
 	@cd $(DEST_DIR) && \
 	git add -A && \
 	(git commit -m "Site rebuild - $(BUILD_TIME)" || echo "$(YELLOW)No changes to commit$(RESET)")
+	@git checkout _cobalt.yml
 	@echo "$(CYAN)• Codeberg:$(RESET)"
 	@git push codeberg $(PUBLISH_BRANCH)
 	@echo "$(GREEN)✓ Published$(RESET)"
