@@ -70,6 +70,8 @@ help:
 	@echo "  $(YELLOW)make draft TITLE='...'$(RESET) - Create a new draft post"
 	@echo "  $(YELLOW)make publish POST=slug$(RESET) - Move draft to published posts"
 	@echo "  $(YELLOW)make unpublish POST=slug$(RESET) - Move post back to drafts"
+	@echo "  $(YELLOW)make show-drafts$(RESET)       - List draft posts (newest first)"
+	@echo "  $(YELLOW)make show-posts$(RESET)        - List published posts (newest first)"
 	@echo ""
 	@echo "$(GREEN)Validation:$(RESET)"
 	@echo "  $(YELLOW)make check$(RESET)            - Check for required tools"
@@ -279,8 +281,10 @@ draft:
 	echo "---" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
 	echo "" >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
 	echo "Your content here..." >> "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
+	git add "$(SOURCE_DIR)/_drafts/$$FILENAME"; \
 	echo "$(GREEN)✓ Created draft: $(CYAN)$$FILENAME$(RESET)"; \
-	echo "$(YELLOW)→ Edit at: $(CYAN)$(SOURCE_DIR)/_drafts/$$FILENAME$(RESET)"
+	echo "$(YELLOW)→ Edit at: $(CYAN)$(SOURCE_DIR)/_drafts/$$FILENAME$(RESET)"; \
+	echo "$(YELLOW)→ Don't forget to commit the change$(RESET)"
 
 .PHONY: publish
 publish:
@@ -331,6 +335,40 @@ unpublish:
 	git mv "$$POST_FILE" "$(SOURCE_DIR)/_drafts/$$FILENAME" && \
 	echo "$(GREEN)✓ Moved to drafts: $(CYAN)$$FILENAME$(RESET)" && \
 	echo "$(YELLOW)→ Don't forget to commit the change$(RESET)"
+
+.PHONY: show-drafts
+show-drafts:
+	@echo "$(BLUE)Draft posts (newest first):$(RESET)"
+	@if [ -d "$(SOURCE_DIR)/_drafts" ] && [ -n "$$(ls -A $(SOURCE_DIR)/_drafts/*.md 2>/dev/null)" ]; then \
+		MAX_LEN=0; \
+		for file in $$(ls -r $(SOURCE_DIR)/_drafts/*.md 2>/dev/null); do \
+			NAME_LEN=$$(basename "$$file" | awk '{print length}'); \
+			[ $$NAME_LEN -gt $$MAX_LEN ] && MAX_LEN=$$NAME_LEN; \
+		done; \
+		ls -r $(SOURCE_DIR)/_drafts/*.md 2>/dev/null | while read file; do \
+			NAME=$$(basename "$$file"); \
+			printf "  $(CYAN)%-$${MAX_LEN}s$(RESET)  %s\n" "$$NAME" "$$file"; \
+		done; \
+	else \
+		echo "  $(YELLOW)(no drafts)$(RESET)"; \
+	fi
+
+.PHONY: show-posts
+show-posts:
+	@echo "$(BLUE)Published posts (newest first):$(RESET)"
+	@if [ -d "$(SOURCE_DIR)/posts" ] && [ -n "$$(ls -A $(SOURCE_DIR)/posts/*.md 2>/dev/null)" ]; then \
+		MAX_LEN=0; \
+		for file in $$(ls -r $(SOURCE_DIR)/posts/*.md 2>/dev/null); do \
+			NAME_LEN=$$(basename "$$file" | awk '{print length}'); \
+			[ $$NAME_LEN -gt $$MAX_LEN ] && MAX_LEN=$$NAME_LEN; \
+		done; \
+		ls -r $(SOURCE_DIR)/posts/*.md 2>/dev/null | while read file; do \
+			NAME=$$(basename "$$file"); \
+			printf "  $(CYAN)%-$${MAX_LEN}s$(RESET)  %s\n" "$$NAME" "$$file"; \
+		done; \
+	else \
+		echo "  $(YELLOW)(no posts)$(RESET)"; \
+	fi
 
 # Validation targets
 .PHONY: check
