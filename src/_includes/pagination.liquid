@@ -1,46 +1,54 @@
 {% if paginator.total_indexes > 1 %}
 <nav class="flex justify-center mt-12" aria-label="Pagination">
-  <div class="join">
-    <!-- First Page -->
-    {% if paginator.previous_index %}
-    <a href="/{{ paginator.first_index_permalink }}" class="join-item btn" aria-label="First page">
-      <span class="iconify lucide--chevrons-left size-4"></span>
-    </a>
-    {% endif %}
-
-    <!-- Previous Page -->
-    {% if paginator.previous_index %}
-    <a href="/{{ paginator.previous_index_permalink }}" class="join-item btn" aria-label="Previous page">
-      <span class="iconify lucide--chevron-left size-4"></span>
-    </a>
-    {% else %}
-    <button class="join-item btn btn-disabled" aria-disabled="true">
-      <span class="iconify lucide--chevron-left size-4"></span>
-    </button>
-    {% endif %}
-
-    <!-- Current Page Indicator -->
-    <button class="join-item btn btn-active">
-      Page {{ paginator.index }} of {{ paginator.total_indexes }}
-    </button>
-
-    <!-- Next Page -->
-    {% if paginator.next_index %}
-    <a href="/{{ paginator.next_index_permalink }}" class="join-item btn" aria-label="Next page">
-      <span class="iconify lucide--chevron-right size-4"></span>
-    </a>
-    {% else %}
-    <button class="join-item btn btn-disabled" aria-disabled="true">
-      <span class="iconify lucide--chevron-right size-4"></span>
-    </button>
-    {% endif %}
-
-    <!-- Last Page -->
-    {% if paginator.next_index %}
-    <a href="/{{ paginator.last_index_permalink }}" class="join-item btn" aria-label="Last page">
-      <span class="iconify lucide--chevrons-right size-4"></span>
-    </a>
-    {% endif %}
-  </div>
+<div class="join">
+{% if paginator.total_indexes <= 7 %}
+{% comment %}Simple pagination for 2-7 pages: just show all numbers{% endcomment %}
+{% for i in (1..paginator.total_indexes) %}
+{% if i == paginator.index %}
+<button class="join-item btn btn-active">{{ i }}</button>
+{% elsif i == 1 %}
+<a href="/{{ paginator.first_index_permalink }}" class="join-item btn">{{ i }}</a>
+{% else %}
+{% assign base_path = paginator.first_index_permalink | replace: "index.html", "index/all" %}
+<a href="/{{ base_path }}/{{ i }}/" class="join-item btn">{{ i }}</a>
+{% endif %}
+{% endfor %}
+{% else %}
+{% comment %}8+ pages: « 1 2 ... N-1 N » format (7 buttons max){% endcomment %}
+{% assign base_path = paginator.first_index_permalink | replace: "index.html", "index/all" %}
+{% assign second_last = paginator.total_indexes | minus: 1 %}
+{% if paginator.previous_index %}
+<a href="/{{ paginator.previous_index_permalink }}" class="join-item btn" aria-label="Previous">«</a>
+{% else %}
+<button class="join-item btn btn-disabled" aria-disabled="true">«</button>
+{% endif %}
+{% if paginator.index == 1 %}
+<button class="join-item btn btn-active">1</button>
+{% else %}
+<a href="/{{ paginator.first_index_permalink }}" class="join-item btn">1</a>
+{% endif %}
+{% if paginator.index == 2 %}
+<button class="join-item btn btn-active">2</button>
+{% else %}
+<a href="/{{ base_path }}/2/" class="join-item btn">2</a>
+{% endif %}
+<button class="join-item btn btn-disabled">...</button>
+{% if paginator.index == second_last %}
+<button class="join-item btn btn-active">{{ second_last }}</button>
+{% else %}
+<a href="/{{ base_path }}/{{ second_last }}/" class="join-item btn">{{ second_last }}</a>
+{% endif %}
+{% if paginator.index == paginator.total_indexes %}
+<button class="join-item btn btn-active">{{ paginator.total_indexes }}</button>
+{% else %}
+<a href="/{{ paginator.last_index_permalink }}" class="join-item btn">{{ paginator.total_indexes }}</a>
+{% endif %}
+{% if paginator.next_index %}
+<a href="/{{ paginator.next_index_permalink }}" class="join-item btn" aria-label="Next">»</a>
+{% else %}
+<button class="join-item btn btn-disabled" aria-disabled="true">»</button>
+{% endif %}
+{% endif %}
+</div>
 </nav>
 {% endif %}

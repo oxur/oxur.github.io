@@ -5,6 +5,7 @@ site:
   data:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     commit_id: "fb4d05f"
     build_time: "2026-01-12T17:29:20Z"
 =======
@@ -15,6 +16,10 @@ site:
     commit_id: "5533ea4"
     build_time: "2026-01-12T05:36:54Z"
 >>>>>>> e03b125 (Polish blog UI and improve navigation)
+=======
+    commit_id: "e03b125"
+    build_time: "2026-01-12T06:14:47Z"
+>>>>>>> 72bfb8d (Add pagination to blog archives)
 
 # Build settings
 source: src
