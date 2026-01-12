@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "css:build": "postcss src/styles/app.css -o docs/assets/css/main.css",
-        "css:build:dev": "postcss src/styles/app.css -o src/assets/css/main.css",
-        "css:watch": "postcss src/styles/app.css -o src/assets/css/main.css --watch",
+        "css:build": "postcss src/styles/app.css -o build/assets/css/main.css",
+        "css:build:dev": "postcss src/styles/app.css -o build/assets/css/main.css",
+        "css:watch": "postcss src/styles/app.css -o build/assets/css/main.css --watch",
         "cobalt:build": "cobalt build",
         "cobalt:serve": "cobalt serve",
         "build": "npm run cobalt:build && npm run css:build",
