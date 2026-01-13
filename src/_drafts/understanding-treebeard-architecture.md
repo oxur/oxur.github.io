@@ -15,11 +15,9 @@ data:
   featured: false
 ---
 
-This is a draft post that won't be published until it's moved to the `posts` directory or the `--drafts` flag is used during build.
-
 ## Introduction
 
-Treebeard is the heart of Oxur's interpretation layer. In this post, we'll explore how it walks the abstract syntax tree and executes Oxur code.
+Treebeard is the foundatio of Oxur's interpretation layer. In this post, we'll explore how it walks the abstract syntax tree and executes Oxur code.
 
 ## The Tree-Walking Approach
 

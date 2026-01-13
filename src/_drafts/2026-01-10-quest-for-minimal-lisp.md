@@ -1,7 +1,7 @@
 ---
 title: "The Quest for Minimal Lisp: From Nine Operators to Six"
 description: How Lisp's core forms evolved from McCarthy's 1960 paper to Scheme's elegant minimal foundation
-published_date: 2026-01-03 10:00:00 -0600
+published_date: 2026-01-10 10:00:00 -0600
 layout: post.liquid
 is_draft: true
 tags:
@@ -27,6 +27,7 @@ The answer matters for Oxur because Core Forms need to be *stable* - they're the
 John McCarthy's landmark 1960 paper "Recursive Functions of Symbolic Expressions and Their Computation by Machine" established Lisp's foundation. He distinguished between **five elementary functions** (which evaluate arguments) and **four special forms** (which don't).
 
 **Elementary functions:**
+
 - `ATOM` - test if atomic symbol
 - `EQ` - equality of atoms
 - `CAR` - first element of pair
@@ -34,6 +35,7 @@ John McCarthy's landmark 1960 paper "Recursive Functions of Symbolic Expressions
 - `CONS` - construct pair
 
 **Special forms:**
+
 - `QUOTE` - prevent evaluation
 - `COND` - conditional with lazy evaluation
 - `LAMBDA` - function abstraction
@@ -68,6 +70,7 @@ The Revised Reports on Scheme progressively codified which forms were primitive 
 **R3RS (1986)** introduced formal "Primitive Expression Types" and "Derived Expression Types":
 
 **Primitive (6):**
+
 1. Variable reference
 2. Literal expressions (quote)
 3. Procedure calls
@@ -141,6 +144,7 @@ This history directly informs Oxur's Core Forms design:
 Based on this research, Oxur's Core Forms will likely include:
 
 **Essential primitives:**
+
 - `quote` - code as data
 - `lambda` - function abstraction
 - `if-expr` - conditionals
@@ -148,12 +152,14 @@ Based on this research, Oxur's Core Forms will likely include:
 - `let` / `set!` - binding and mutation
 
 **Structural forms:**
+
 - `block` - sequencing
 - `binary-op` / `unary-op` - operations
 - `call` - function application
 - `var-ref` - variable references
 
 **Type-aware (Rust integration):**
+
 - `type-ref` - reference Rust types
 - `param` - typed parameters
 

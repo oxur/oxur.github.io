@@ -1,7 +1,7 @@
 ---
 title: "The Evolution of Lisp Core Forms: A Tabular History"
 description: Tracing how "core" versus "derived" forms were categorized from McCarthy through Scheme standardization
-published_date: 2026-01-04 11:00:00 -0600
+published_date: 2026-01-11 11:00:00 -0600
 layout: post.liquid
 is_draft: true
 tags:
@@ -276,6 +276,7 @@ Looking at this evolution, several principles emerge for Oxur's Core Forms:
 This tabular history serves as both reference and guide. When designing Core Forms, we can ask: "Which category has this historically belonged to?" The answer usually reveals whether it's genuinely primitive or derived convenience.
 
 For Oxur, the plan is:
+
 - **Core Forms**: ~6-8 primitives (quote, lambda, if, define-func, let, set!, type-ref, param)
 - **Structural forms**: ~5-6 (block, binary-op, call, var-ref, literal)
 - **Surface Forms**: Everything else, expressed via macros
